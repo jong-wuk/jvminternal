@@ -49,6 +49,7 @@ function multiply() {
     createAndWriteLog('*', initialResult, enteredNumber);
     writeToLog('MULTIPLY', initialResult, enteredNumber, currentResult);
 
+
 }
 
 function divide() {

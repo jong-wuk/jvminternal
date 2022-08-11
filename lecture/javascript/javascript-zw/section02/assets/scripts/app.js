@@ -4,7 +4,7 @@ let currentResult = defaultResult;
 function getUserNumberInput() {
     return parseInt(userInput.value);
 }
-
+// 로그를 만들고 출력하는 함수
 function createAndWriteLog(operator, resultBeforeCalc, calcNumber) {
     const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
     outputResult(currentResult, calcDescription);

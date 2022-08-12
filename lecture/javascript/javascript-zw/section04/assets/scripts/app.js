@@ -6,10 +6,10 @@ function getUserNumberInput() {
     return parseInt(userInput.value);
 }
 
-function resetLogAndNumber(){
+function resetLogAndNumber() {
     logEntries = [];
     currentResult = 0;
-    outputResult(0,"0");
+    outputResult(0, "0");
 }
 
 // 로그를 만들고 출력하는 함수
@@ -29,6 +29,14 @@ function writeToLog(operationIdentifier, previousResult, operationNumber, newRes
 }
 
 function calculateResult(calculationType) {
+    if (
+        calculationType !== 'ADD' &&
+        calculationType !== 'SUBTRACT' &&
+        calculationType !== 'MULTIPLY' &&
+        calculationType !== 'DIVIDE'
+    ) {
+        return;
+    }
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
     let mathOperator;
@@ -41,7 +49,7 @@ function calculateResult(calculationType) {
     } else if (calculationType === 'MULTIPLY') {
         currentResult *= enteredNumber;
         mathOperator = '*';
-    } else {
+    } else if (calculationType === 'DIVIDE') {
         currentResult /= enteredNumber;
         mathOperator = '/';
     }

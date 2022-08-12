@@ -3,14 +3,21 @@ const STRONG_ATTACK_VALUE = 17;
 const MONSTER_ATTACK_VALUE = 14;
 const HEAL_VALUE = 20;
 
-let chosenMaxLife = 100;
+const enteredValue = prompt("당신과 몬스터의 최대 체력 수치를 입력해 주세요.", '100');
+
+let chosenMaxLife = parseInt(enteredValue);
+
+if(isNaN(chosenMaxLife) || chosenMaxLife <= 0){
+    chosenMaxLife = 100;
+}
+
 let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
 let hasBonusLife = true;
 
 adjustHealthBars(chosenMaxLife);
 
-function reset(){
+function reset() {
     currentMonsterHealth = chosenMaxLife;
     currentPlayerHealth = chosenMaxLife;
     resetGame(chosenMaxLife);
@@ -33,7 +40,7 @@ function endRound() {
     const initialPlayerHealth = currentPlayerHealth;
     const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE);
     currentPlayerHealth -= playerDamage;
-    if(currentPlayerHealth <= 0 && hasBonusLife === true){
+    if (currentPlayerHealth <= 0 && hasBonusLife === true) {
         hasBonusLife = false;
         removeBonusLife();
         currentPlayerHealth = initialPlayerHealth;
@@ -49,17 +56,17 @@ function endRound() {
         alert("비겼습니다..!!");
     }
 
-    if(currentPlayerHealth <= 0 || currentMonsterHealth <= 0){
+    if (currentPlayerHealth <= 0 || currentMonsterHealth <= 0) {
         reset();
     }
 }
 
 function healPlayerHandler() {
     let healValue;
-    if(currentPlayerHealth >= chosenMaxLife - HEAL_VALUE){
+    if (currentPlayerHealth >= chosenMaxLife - HEAL_VALUE) {
         alert("체력이 꽉 잤습니다.");
         healValue = chosenMaxLife - currentPlayerHealth;
-    }else{
+    } else {
         healValue = HEAL_VALUE;
     }
     increasePlayerHealth(healValue);

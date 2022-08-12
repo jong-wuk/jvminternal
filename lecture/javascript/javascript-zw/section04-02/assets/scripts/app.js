@@ -6,6 +6,7 @@ const HEAL_VALUE = 20;
 let chosenMaxLife = 100;
 let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
+let hasBonusLife = true;
 
 adjustHealthBars(chosenMaxLife);
 
@@ -23,11 +24,19 @@ function attackMonster(mode) {
 }
 
 function endRound() {
+    const initialPlayerHealth = currentPlayerHealth;
     const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE);
     currentPlayerHealth -= playerDamage;
+    if(currentPlayerHealth <= 0 && hasBonusLife === true){
+        hasBonusLife = false;
+        removeBonusLife();
+        currentPlayerHealth = initialPlayerHealth;
+        alert("보너스 생명을 이용해 부활 했습니다.!")
+        setPlayerHealth(initialPlayerHealth);
+    }
+
     if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
         alert("몬스터를 물리쳤습니다.!!")
-        resetGame(adjustHealthBars(chosenMaxLife));
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
         alert("플레이어가 졌습니다!");
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {

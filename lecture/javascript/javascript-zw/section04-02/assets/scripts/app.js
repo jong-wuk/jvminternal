@@ -14,7 +14,6 @@ const enteredValue = prompt("당신과 몬스터의 최대 체력 수치를 입�
 
 let chosenMaxLife = parseInt(enteredValue);
 let battleLog = [];
-
 if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
     chosenMaxLife = 100;
 }

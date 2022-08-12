@@ -188,3 +188,5 @@ function printLogHandler() {
 }
 
 logBtn.addEventListener('click', printLogHandler);
+
+//https://stackoverflow.com/questions/12703214/javascript-difference-between-a-statement-and-an-expression expression vs statement

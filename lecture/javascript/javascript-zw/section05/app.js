@@ -1,3 +1,4 @@
+/*
 var name = "Max";
 let hobbies;
 if(name === 'Max'){
@@ -15,4 +16,8 @@ function greet(){
 }
 console.log(name,hobbies);
 greet();
-console.log(name);
+console.log(name);*/
+let userName = 'Max';
+
+console.log(userName);
+

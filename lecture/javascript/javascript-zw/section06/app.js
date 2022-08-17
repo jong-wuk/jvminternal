@@ -29,5 +29,3 @@ startGameBtn.addEventListener("click", function startGame() {
     const playerSelection = getPlayerChoice();
     console.log(playerSelection);
 });
-
-

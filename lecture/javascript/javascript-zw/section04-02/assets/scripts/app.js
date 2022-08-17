@@ -226,10 +226,12 @@ attackBtn.addEventListener('click', attackHandler);
 strongAttackBtn.addEventListener('click', strongAttackHandler);
 
 function printLogHandler() {
-    for (let loop = 0; loop < 3; loop++) {
-        console.log("========================")
+    /*for (let loop = 0; loop < battleLog.length; loop++) {
+        console.log(battleLog[loop]);
+    }*/
+    for (const logEntry of battleLog) {
+        console.log(logEntry);
     }
-    console.log(battleLog);
 }
 
 logBtn.addEventListener('click', printLogHandler);

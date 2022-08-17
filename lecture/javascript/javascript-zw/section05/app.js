@@ -17,7 +17,10 @@ function greet(){
 console.log(name,hobbies);
 greet();
 console.log(name);*/
-let userName = 'Max';
+"use strict";
+
+let userName = "Max";
+var undefined = 5;
 
 console.log(userName);
 

@@ -1,6 +1,11 @@
 const startGameBtn = document.getElementById('start-game-btn');
 
 
+
+const start = function() {
+    console.log("Game is starting...");
+};
+
 /*const start = function() {
     console.log("Game is starting...");
 };*/
@@ -20,3 +25,4 @@ person.greet();*/
 startGameBtn.addEventListener("click", function startGame() {
     console.log("Game is starting...",age);
 });
+startGameBtn.addEventListener("click", start);

@@ -230,9 +230,15 @@ function printLogHandler() {
     /*for (let loop = 0; loop < battleLog.length; loop++) {
         console.log(battleLog[loop]);
     }*/
-    let j = 3;
-    do {
-        console.log("=================");
+    let j = 0;
+    outerWhile: do {
+        console.log("outer", j);
+        innerFor: for (let k = 0; k < 5; k++) {
+            if (k === 3) {
+                break outerWhile;
+            }
+            console.log("inner", k);
+        }
         j++;
     } while (j < 3);
 

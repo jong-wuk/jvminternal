@@ -17,7 +17,7 @@ const getPlayerChoice = () => {
         && selection !== ROCK
         && selection !== PAPER) {
         alert("유효하지 않은 값 입니다! 대신 " + DEFAULT_USER_CHOICE + "를 선택 해드렸습니다!");
-        return DEFAULT_USER_CHOICE;
+        return;
     }
     return selection;
 }
@@ -34,7 +34,7 @@ const getComputerChoice = () => {
 }
 
 
-const getWinner = (computerChoice, playerChoice) =>
+const getWinner = (computerChoice, playerChoice = DEFAULT_USER_CHOICE) =>
     computerChoice === playerChoice
         ? RESULT_DRAW
         : (computerChoice === ROCK && playerChoice === PAPER) ||
@@ -65,9 +65,13 @@ startGameBtn.addEventListener("click", () => {
     console.log("Game is starting...");
     const playerChoice = getPlayerChoice();
     const computerChoice = getComputerChoice();
-    const winner = getWinner(computerChoice, playerChoice);
-
-    let message = `You Picked ${playerChoice}, computer Picked ${computerChoice}, therefore you had a `;
+    let winner;
+    if (playerChoice) {
+        winner = getWinner(computerChoice, playerChoice);
+    }else{
+        winner = getWinner(computerChoice,playerChoice);
+    }
+    let message = `You Picked ${playerChoice || DEFAULT_USER_CHOICE}, computer Picked ${computerChoice}, therefore you had a `;
     if (winner === RESULT_DRAW) {
         message += `${RESULT_DRAW}`;
     } else if (winner === RESULT_PLAYER_WINS) {

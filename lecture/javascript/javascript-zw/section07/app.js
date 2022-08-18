@@ -2,6 +2,8 @@
 const listItemElements = document.getElementsByTagName('li');
 const h1 = document.getElementById("main-title");
 
+// const ul = li.parentElement;
+
 h1.textContent = "새로운 타이틀";
 h1.style.color = "white";
 h1.style.backgroundColor = 'black';

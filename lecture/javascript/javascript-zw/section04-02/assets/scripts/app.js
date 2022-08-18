@@ -10,29 +10,12 @@ const LOG_EVENT_MONSTER_ATTACK = "MONSTER_ATTACK";
 const LOG_EVENT_PLAYER_HEAL = "PLAYER_HEAL";
 const LOG_EVENT_GAME_OVER = 'GAME_OVER';
 
+const enteredValue = prompt("당신과 몬스터의 최대 체력 수치를 입력해 주세요.", '100');
 
+let chosenMaxLife = parseInt(enteredValue);
 let battleLog = [];
-let lastLoggedEntry;
-
-function getMaxLifeValues() {
-    const enteredValue = prompt("당신과 몬스터의 최대 체력 수치를 입력해 주세요.", '100');
-
-    const parsedValue = parseInt(enteredValue);
-    if (isNaN(parsedValue) || parsedValue <= 0) {
-        throw {message: "Invalid user input , not a number!"};
-    }
-    return parsedValue;
-}
-
-let chosenMaxLife;
-try {
-    chosenMaxLife = getMaxLifeValues();
-
-} catch (error) {
-    console.log(error);
+if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
     chosenMaxLife = 100;
-    alert("기본값 100으로 재설정 되었습니다.");
-    // throw error;
 }
 
 let currentMonsterHealth = chosenMaxLife;
@@ -246,28 +229,18 @@ function printLogHandler() {
     /*for (let loop = 0; loop < battleLog.length; loop++) {
         console.log(battleLog[loop]);
     }*/
-    let j = 0;
-    outerWhile: do {
-        console.log("outer", j);
-        innerFor: for (let k = 0; k < 5; k++) {
-            if (k === 3) {
-                break outerWhile;
-            }
-            console.log("inner", k);
-        }
+    let j = 3;
+    do {
+        console.log(j);
         j++;
     } while (j < 3);
 
 
     let i = 0;
     for (const logEntry of battleLog) {
-        if (!lastLoggedEntry && lastLoggedEntry !== 0 || lastLoggedEntry < i) {
-            console.log(`#${i}`);
-            for (const key in logEntry) {
-                console.log(`${key} => ${logEntry[key]}`);
-            }
-            lastLoggedEntry = i;
-            break;
+        console.log(`#${i}`);
+        for (const key in logEntry) {
+            console.log(`${key} => ${logEntry[key]}`);
         }
         i++;
     }

@@ -26,3 +26,5 @@ undefined
 ~~~
 
 `cloneNode(true);` 를 이용하면 노드 복사가 가능하다.
+
+`getElementsBy***()`메서드를 이용하면 예전에 쿼리한 아이템이 바뀌면 같이 바뀐다.

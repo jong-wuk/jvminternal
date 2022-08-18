@@ -7,6 +7,8 @@ const DEFAULT_USER_CHOICE = ROCK;
 const RESULT_DRAW = 'DRAW';
 const RESULT_PLAYER_WINS = 'PLAYER_WINS';
 const RESULT_COMPUTER_WINS = 'COMPUTER_WINS';
+const OPERATION_SUBTRACT = "SUBTRACT";
+const OPERATION_ADD = "ADD";
 
 let gameIsRunning = false;
 
@@ -85,31 +87,36 @@ startGameBtn.addEventListener("click", () => {
 
 });
 
-const sumUp = (resultHandler, ...numbers) => {
+const combine = (resultHandler, operation, ...numbers) => {
     const validateNumber = (number) => {
         return isNaN(number) ? 0 : number;
     };
 
-    let sum = 0;
+    let operation_result = 0;
     for (const num of numbers) {
-        sum += validateNumber(num);
+        if (operation === OPERATION_ADD) {
+            operation_result += validateNumber(num);
+        } else {
+            operation_result -= validateNumber(num);
+        }
     }
-    resultHandler(sum);
+    resultHandler(operation_result, "The result after adding all number is : ");
 
 };
-const subtractUp = function () {
-    let sum = 0;
-    for (const num of arguments) { //arguments는 잘 안쓰임
-        sum -= num;
+
+/*const subtractUp = function (resultHandler, ...numbers) {
+    let subtract = 0;
+    for (const num of numbers) {
+        subtract -= num;
     }
-    return sum;
+    resultHandler(subtract,"The result after subtracting all number is : ");
 
 
+};*/
+
+const showResult = (messageText,result) => {
+    alert(messageText+"" + result);
 };
-
-const showResult = (result) => {
-    alert("The result after adding all number is : " + result);
-};
-sumUp(showResult, 1, 'asd', 10, -3, 6, 10);
-sumUp(showResult, 5, 10, -3, 6, 10, 25, 88);
-console.log(subtractUp(1, 5, 1, 2, 3, 555, 6, 7));
+combine(showResult.bind(this, "The result after adding all number is:"), OPERATION_ADD, 1, 'asd', 10, -3, 6, 10);
+combine(showResult.bind(this, "The result after adding all number is:"), OPERATION_ADD, 5, 10, -3, 6, 10, 25, 88);
+combine(showResult.bind(this, "The result after subtracting all number is:"), OPERATION_SUBTRACT, 1, 5, 1, 2, 3, 555, 6, 7);

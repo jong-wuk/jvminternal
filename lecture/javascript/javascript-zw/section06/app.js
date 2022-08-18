@@ -68,8 +68,8 @@ startGameBtn.addEventListener("click", () => {
     let winner;
     if (playerChoice) {
         winner = getWinner(computerChoice, playerChoice);
-    }else{
-        winner = getWinner(computerChoice,playerChoice);
+    } else {
+        winner = getWinner(computerChoice, playerChoice);
     }
     let message = `You Picked ${playerChoice || DEFAULT_USER_CHOICE}, computer Picked ${computerChoice}, therefore you had a `;
     if (winner === RESULT_DRAW) {
@@ -84,3 +84,25 @@ startGameBtn.addEventListener("click", () => {
     gameIsRunning = false;
 
 });
+
+const sumUp = (...numbers) => {
+     let sum = 0;
+    for (const num of numbers) {
+        sum += num;
+    }
+    return sum;
+
+};
+const subtractUp = function() {
+    let sum = 0;
+    for (const num of arguments) { //arguments는 잘 안쓰임
+        sum -= num;
+    }
+    return sum;
+
+
+};
+
+console.log(sumUp(1, 5, 10, -3, 6, 10));
+console.log(sumUp(1, 5, 10, -3, 6, 10, 25, 88));
+console.log(subtractUp(1,5,1,2,3,555,6,7));

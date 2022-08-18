@@ -87,6 +87,7 @@ startGameBtn.addEventListener("click", () => {
 
 });
 
+
 const combine = (resultHandler, operation, ...numbers) => {
     const validateNumber = (number) => {
         return isNaN(number) ? 0 : number;

@@ -86,14 +86,18 @@ startGameBtn.addEventListener("click", () => {
 });
 
 const sumUp = (...numbers) => {
-     let sum = 0;
+    const validateNumber = (number) => {
+        return isNaN(number) ? 0 : number;
+    };
+
+    let sum = 0;
     for (const num of numbers) {
-        sum += num;
+        sum += validateNumber(num);
     }
     return sum;
 
 };
-const subtractUp = function() {
+const subtractUp = function () {
     let sum = 0;
     for (const num of arguments) { //arguments는 잘 안쓰임
         sum -= num;
@@ -103,6 +107,6 @@ const subtractUp = function() {
 
 };
 
-console.log(sumUp(1, 5, 10, -3, 6, 10));
+console.log(sumUp(1, 'asd', 10, -3, 6, 10));
 console.log(sumUp(1, 5, 10, -3, 6, 10, 25, 88));
-console.log(subtractUp(1,5,1,2,3,555,6,7));
+console.log(subtractUp(1, 5, 1, 2, 3, 555, 6, 7));

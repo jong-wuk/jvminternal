@@ -35,8 +35,9 @@ hobbies.splice(-1, 1);
 console.log(hobbies);*/
 
 
-const testLists = [1, 5.3, 1.5, 10.988, -5, 10];
-const sliceTestLists = testLists.slice(-2, -1);
-console.log(sliceTestLists);
-sliceTestLists.push(10);
-console.log(testLists);
+const testLists = [1, 5.3, 1.5, 10.988, -5, 'a'];
+// const sliceTestLists = testLists.slice(-2, -1);
+const sliceTestLists = testLists.concat([3.99,2,5]);
+console.log("sliceTestLists: "+sliceTestLists);
+testLists.push(10);
+console.log("testList: "+testLists);

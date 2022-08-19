@@ -15,7 +15,7 @@ const arrayListItems = Array.from(listItems);
 console.log(arrayListItems);
 
 const analysticsData = [[1.2, 2.5], [2.17, 1.17]];
-const hobbies = ['Sports','Cooking'];
+const hobbies = ['Sports', 'Cooking'];
 hobbies.push(2);
 hobbies.unshift(3);
 const poppedValue = hobbies.pop();
@@ -24,5 +24,11 @@ console.log(hobbies);
 console.log(poppedValue);
 
 hobbies[1] = 'Coding';
-hobbies[5] = 'Reading';
-console.log(hobbies,hobbies[4]);
+// hobbies[5] = 'Reading';
+console.log(hobbies, hobbies[4]);
+
+hobbies.splice(0, 0, 'Good Food');
+console.log(hobbies);
+
+hobbies.splice(-1, 1);
+console.log(hobbies);

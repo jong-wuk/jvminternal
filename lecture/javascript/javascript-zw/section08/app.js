@@ -1,3 +1,4 @@
+/*
 const numbers = [1, 2, 3];
 console.log(numbers);
 
@@ -31,4 +32,11 @@ hobbies.splice(0, 0, 'Good Food');
 console.log(hobbies);
 
 hobbies.splice(-1, 1);
-console.log(hobbies);
+console.log(hobbies);*/
+
+
+const testLists = [1, 5.3, 1.5, 10.988, -5, 10];
+const sliceTestLists = testLists.slice(-2, -1);
+console.log(sliceTestLists);
+sliceTestLists.push(10);
+console.log(testLists);

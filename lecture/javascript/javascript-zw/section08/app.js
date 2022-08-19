@@ -13,3 +13,8 @@ const listItems = document.querySelectorAll("li");
 
 const arrayListItems = Array.from(listItems);
 console.log(arrayListItems);
+
+const analysticsData = [[1.2, 2.5], [2.17, 1.17]];
+
+
+console.log(numbers[1]);

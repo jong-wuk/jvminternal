@@ -42,6 +42,7 @@ console.log("sliceTestLists: " + sliceTestLists);
 testLists.push(10);
 console.log("testList: " + testLists);
 console.log(testLists.lastIndexOf('a'));
+console.log(testLists.includes(1.5));
 
 const personData = [{name: 'MAX'}, {name: 'Michael'}];
 console.log(personData.indexOf({name: 'Michael'}))

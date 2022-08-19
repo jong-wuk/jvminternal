@@ -107,3 +107,11 @@ console.log(filteredArray);
 const sum = prices.reduce((previousValue, currentValue, currentIndex, prices)=>{
     return previousValue + currentValue;
 }, 0);
+
+const data = 'new york;10.99;2000';
+const splitData = data.split(';');
+console.log(splitData);
+
+const nameFragments = ['Wook', 'Jong'];
+const name = nameFragments.join(' ');
+console.log(name);

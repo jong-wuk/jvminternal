@@ -83,12 +83,12 @@ const taxAdjustedPrices = prices.map((price, idx, prices) => {
 
 // console.log(prices, taxAdjustedPrices);
 
-const sortedPrices = prices.sort((a,b)=>{
-    if(a > b){
+const sortedPrices = prices.sort((a, b) => {
+    if (a > b) {
         return 1;
-    }else if (a ===  b){
+    } else if (a === b) {
         return 0;
-    }else{
+    } else {
         return -1;
     }
 });
@@ -104,7 +104,7 @@ console.log(filteredArray);
 // });
 // console.log(sum);
 
-const sum = prices.reduce((previousValue, currentValue, currentIndex, prices)=>{
+const sum = prices.reduce((previousValue, currentValue, currentIndex, prices) => {
     return previousValue + currentValue;
 }, 0);
 
@@ -115,3 +115,16 @@ console.log(splitData);
 const nameFragments = ['Wook', 'Jong'];
 const name = nameFragments.join(' ');
 console.log(name);
+
+const copyFragments = [...nameFragments];
+nameFragments.push('MR')
+console.log(copyFragments, nameFragments);
+
+console.log(Math.min(1, 5, -3));
+console.log(Math.min(...prices));
+
+const persons = [{name: 'Max', age: 30}, {name: 'Manuel', age: 28}];
+const copiedPersons = [...persons];
+persons.push({name:"anna", age: 12});
+
+console.log(persons, copiedPersons);

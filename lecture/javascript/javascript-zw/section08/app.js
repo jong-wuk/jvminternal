@@ -104,6 +104,7 @@ console.log(filteredArray);
 // });
 // console.log(sum);
 
+/*
 const sum = prices.reduce((previousValue, currentValue, currentIndex, prices) => {
     return previousValue + currentValue;
 }, 0);
@@ -127,4 +128,8 @@ const persons = [{name: 'Max', age: 30}, {name: 'Manuel', age: 28}];
 const copiedPersons = [...persons];
 persons.push({name:"anna", age: 12});
 
-console.log(persons, copiedPersons);
+console.log(persons, copiedPersons);*/
+
+const [성,이름] = ['Max', 'Schwarz'];
+console.log(성);
+

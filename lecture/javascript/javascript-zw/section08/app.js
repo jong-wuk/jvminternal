@@ -41,3 +41,7 @@ const sliceTestLists = testLists.concat([3.99,2,5]);
 console.log("sliceTestLists: "+sliceTestLists);
 testLists.push(10);
 console.log("testList: "+testLists);
+console.log(testLists.lastIndexOf('a'));
+
+const personData = [{name: 'MAX'},{name:'Michael'}];
+console.log(personData.indexOf({name:'Michael'}))

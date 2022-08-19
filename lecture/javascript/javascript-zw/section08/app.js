@@ -15,6 +15,14 @@ const arrayListItems = Array.from(listItems);
 console.log(arrayListItems);
 
 const analysticsData = [[1.2, 2.5], [2.17, 1.17]];
+const hobbies = ['Sports','Cooking'];
+hobbies.push(2);
+hobbies.unshift(3);
+const poppedValue = hobbies.pop();
+hobbies.shift();
+console.log(hobbies);
+console.log(poppedValue);
 
-
-console.log(numbers[1]);
+hobbies[1] = 'Coding';
+hobbies[5] = 'Reading';
+console.log(hobbies,hobbies[4]);

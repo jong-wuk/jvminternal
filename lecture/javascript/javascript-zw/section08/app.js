@@ -37,11 +37,22 @@ console.log(hobbies);*/
 
 const testLists = [1, 5.3, 1.5, 10.988, -5, 'a'];
 // const sliceTestLists = testLists.slice(-2, -1);
-const sliceTestLists = testLists.concat([3.99,2,5]);
-console.log("sliceTestLists: "+sliceTestLists);
+const sliceTestLists = testLists.concat([3.99, 2, 5]);
+console.log("sliceTestLists: " + sliceTestLists);
 testLists.push(10);
-console.log("testList: "+testLists);
+console.log("testList: " + testLists);
 console.log(testLists.lastIndexOf('a'));
 
-const personData = [{name: 'MAX'},{name:'Michael'}];
-console.log(personData.indexOf({name:'Michael'}))
+const personData = [{name: 'MAX'}, {name: 'Michael'}];
+console.log(personData.indexOf({name: 'Michael'}))
+
+const michael = personData.find((person) => {
+    return person.name === 'Michael';
+});
+michael.name = "Anna";
+console.log(michael,personData);
+
+const MaxIndex = personData.findIndex((person) => {
+    return person.name === 'MAX';
+});
+console.log(MaxIndex);

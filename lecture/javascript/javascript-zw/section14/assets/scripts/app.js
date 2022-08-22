@@ -84,6 +84,7 @@ class ProjectItem {
     this.updateProjectListsHandler = updateProjectListsFunction;
     this.connectMoreInfoButton();
     this.connectSwitchButton(type);
+    this.connectDrag();
   }
 
   showMoreInfoHandler() {
@@ -109,6 +110,13 @@ class ProjectItem {
       'button:first-of-type'
     );
     moreInfoBtn.addEventListener('click', this.showMoreInfoHandler.bind(this));
+  }
+
+  connectDrag(){
+    document.getElementById(this.id).addEventListener('dragstart',event=>{
+      event.dataTransfer.setData('text/plain', this.id);
+      event.dataTransfer.effectAllowed = 'move';
+    });
   }
 
   connectSwitchButton(type) {
@@ -171,11 +179,11 @@ class App {
       activeProjectsList.addProject.bind(activeProjectsList)
     );
 
-    const timerId = setTimeout(this.startAnalytics, 3000);
-
-    document.getElementById('stop-analytics-btn').addEventListener('click', () => {
-      clearTimeout(timerId);
-    });
+    // const timerId = setTimeout(this.startAnalytics, 3000);
+    //
+    // document.getElementById('stop-analytics-btn').addEventListener('click', () => {
+    //   clearTimeout(timerId);
+    // });
   }
 
   static startAnalytics() {

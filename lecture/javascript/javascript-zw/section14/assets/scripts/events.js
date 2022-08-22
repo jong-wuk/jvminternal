@@ -5,7 +5,7 @@ const buttons = document.querySelectorAll("button");
 // }
 
 const buttonClickHandler = (event) => {
-    event.target.disabled = true;
+    // event.target.disabled = true;
     console.log(event);
 };
 
@@ -18,9 +18,13 @@ const anotherButtonClickHandler = () => {
 // button.onclick = buttonClickHandler;
 
 // button.addEventListener('click', buttonClickHandler);
-buttons.forEach(btn =>{
-    btn.addEventListener('click', buttonClickHandler);
-})
-// setTimeout(() => {
-//     button.removeEventListener('click', buttonClickHandler);
-// }, 2000);
+// buttons.forEach(btn =>{
+//     btn.addEventListener('mouseenter', buttonClickHandler);
+// })
+// // setTimeout(() => {
+// //     button.removeEventListener('click', buttonClickHandler);
+// // }, 2000);
+//
+// window.addEventListener('scroll',event =>{
+//     console.log(event);
+// })

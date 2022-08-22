@@ -4,20 +4,21 @@ const button = document.querySelector("button");
 //
 // }
 
-/*
 const buttonClickHandler = () => {
     alert('Button was Clicked!');
     button.style.background = "black";
 };
 
-const anotherButtonClickHandler = ()=>{
+const anotherButtonClickHandler = () => {
     console.log('clicked!');
 };
 
 
-button.onclick = anotherButtonClickHandler;
-button.onclick = buttonClickHandler;*/
+// button.onclick = anotherButtonClickHandler;
+// button.onclick = buttonClickHandler;
 
-button.addEventListener();
+button.addEventListener('click', buttonClickHandler.bind(this));
 
-button.removeEventListener();
+setTimeout(() => {
+    button.removeEventListener('click', buttonClickHandler.bind(this));
+}, 2000);

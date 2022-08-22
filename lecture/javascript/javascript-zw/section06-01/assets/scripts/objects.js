@@ -17,7 +17,11 @@ const renderMovies = (filter = '') => {
 
     filteredMovies.forEach((movie) => {
         const movieElement = document.createElement('li');
+        if('info' in movie){
+            console.log("info in movie!");
+        }
         const {info, ...otherProps} = movie;
+
         console.log(otherProps);
         const {title: movieTitle} = info;
         let text = movieTitle + ' - ';

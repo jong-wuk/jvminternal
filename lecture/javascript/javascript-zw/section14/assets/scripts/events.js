@@ -36,27 +36,29 @@ form.addEventListener("submit", (event) => {
     console.log(event);
 })
 
-button.addEventListener("mouseenter", event => {
-    console.log("CLICKED BUTTON");
-    console.log(event);
-})
 
 const div = document.querySelector("div");
 div.addEventListener('mouseenter', event => {
-    event.stopPropagation();
     console.log("CLICKED DIV");
     console.log(event);
 });
 
-const listItems = document.querySelectorAll("li");
+button.addEventListener("click", function (event) {
+    event.stopPropagation();
+    console.log("CLICKED BUTTON");
+    console.log(event);
+    console.log(this);
+})
+// const listItems = document.querySelectorAll("li");
 const list = document.querySelector("ul");
 
-list.addEventListener("click", event => {
+list.addEventListener("click", function (event){
     // console.log(event.currentTarget);
     //     event.target.classList.toggle('highlight');
     event.target.closest('li').classList.toggle('highlight');
     // form.submit();
     button.click();
+    console.log(this);
 });
 
 // listItems.forEach(listItem => {

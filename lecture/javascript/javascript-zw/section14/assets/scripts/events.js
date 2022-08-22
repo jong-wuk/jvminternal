@@ -1,12 +1,12 @@
-const button = document.querySelector("button");
+const buttons = document.querySelectorAll("button");
 
 // button.onclick = function (){
 //
 // }
 
-const buttonClickHandler = () => {
-    alert('Button was Clicked!');
-    button.style.background = "black";
+const buttonClickHandler = (event) => {
+    event.target.disabled = true;
+    console.log(event);
 };
 
 const anotherButtonClickHandler = () => {
@@ -17,8 +17,10 @@ const anotherButtonClickHandler = () => {
 // button.onclick = anotherButtonClickHandler;
 // button.onclick = buttonClickHandler;
 
-button.addEventListener('click', buttonClickHandler.bind(this));
-
-setTimeout(() => {
-    button.removeEventListener('click', buttonClickHandler.bind(this));
-}, 2000);
+// button.addEventListener('click', buttonClickHandler);
+buttons.forEach(btn =>{
+    btn.addEventListener('click', buttonClickHandler);
+})
+// setTimeout(() => {
+//     button.removeEventListener('click', buttonClickHandler);
+// }, 2000);

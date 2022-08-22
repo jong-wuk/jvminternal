@@ -61,7 +61,8 @@ const addMovieHandler = () => {
     renderMovies();
 };
 
-const serarchMovieHandler = () => {
+const serarchMovieHandler = function(){
+    console.log(this);
     const filterTerm = document.getElementById("filter-title").value;
     renderMovies(filterTerm);
 }

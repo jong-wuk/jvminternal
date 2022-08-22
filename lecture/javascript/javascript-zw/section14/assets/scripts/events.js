@@ -42,7 +42,7 @@ button.addEventListener("mouseenter", event => {
 })
 
 const div = document.querySelector("div");
-div.addEventListener('mouseenter', event =>{
+div.addEventListener('mouseenter', event => {
     event.stopPropagation();
     console.log("CLICKED DIV");
     console.log(event);
@@ -51,11 +51,13 @@ div.addEventListener('mouseenter', event =>{
 const listItems = document.querySelectorAll("li");
 const list = document.querySelector("ul");
 
-list.addEventListener("click",event => {
+list.addEventListener("click", event => {
     // console.log(event.currentTarget);
     //     event.target.classList.toggle('highlight');
-        event.target.closest('li').classList.toggle('highlight');
-    });
+    event.target.closest('li').classList.toggle('highlight');
+    // form.submit();
+    button.click();
+});
 
 // listItems.forEach(listItem => {
 //     listItem.addEventListener('click', event => {

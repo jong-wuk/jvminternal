@@ -27,3 +27,5 @@ console.log(productOutput);
 
 // const regex = /^\S+@\S+\.\S+$/
 // regex.test(userInput)
+// 'hi.jello'.match(/.ello/);
+//regex.exec('jello');

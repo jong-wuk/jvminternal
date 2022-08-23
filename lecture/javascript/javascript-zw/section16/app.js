@@ -24,3 +24,6 @@ const prodPrice = 29.99;
 
 const productOutput = productDescription`This product (${prodName}) is ${prodPrice}`;
 console.log(productOutput);
+
+// const regex = /^\S+@\S+\.\S+$/
+// regex.test(userInput)

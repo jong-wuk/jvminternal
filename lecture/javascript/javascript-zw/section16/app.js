@@ -4,3 +4,6 @@ function randomintBetween(min, max){    // min = 5, max = 10
 
 
 console.log(randomintBetween(1, 10));
+
+
+// 'hello'.toUpperCase()

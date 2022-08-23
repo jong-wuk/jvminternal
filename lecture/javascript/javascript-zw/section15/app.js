@@ -47,3 +47,15 @@ multiplier = 1.2
 
 console.log(calculateVatAmount(100));
 console.log(calculateVatAmount(100));
+
+let userName = 'Max';
+
+function greetUser(){
+    // let name = 'Anna';
+    console.log("hi"+name);
+}
+let name = 'lexical';
+
+userName = 'Manuel';
+
+greetUser();

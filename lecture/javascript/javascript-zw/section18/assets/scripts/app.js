@@ -10,7 +10,11 @@ function sendHttpRequest(method, url, data) {
     });
     return fetch(url,{
         method:method,
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+            "Set-Cookie": "logined"
+        }
     }).then(response=>{
         return response.json();
     });

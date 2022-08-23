@@ -64,4 +64,15 @@ greetUser();
     var age = 30;
     console.log(age);
 })()
-console.log(age); //Error 발생 "age is not defined"
+// console.log(age); //Error 발생 "age is not defined"
+
+function powerOf(x, n) {
+    // if (n === 1) {
+    //     return x;
+    // }
+    // return (x * (powerOf(x,n-1)));
+
+    return n === 1 ? x : x * powerOf(x, n - 1);
+}
+
+console.log(powerOf(2, 3));

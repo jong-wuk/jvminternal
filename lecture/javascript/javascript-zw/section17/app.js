@@ -24,29 +24,33 @@ async function trackUserHandler() {
     // let positionData;
     let timerData;
     let posData;
-    try{
-    posData = await getPosition();
-    timerData = await setTimer(2000);
-    }catch(error){
+    try {
+        posData = await getPosition();
+        timerData = await setTimer(2000);
+    } catch (error) {
         console.log(error);
     }
-    console.log(timerData,posData);
-        // .then(posData => {
-        //     positionData = posData;
-        //     return setTimer(2000);
-        // })
-        // .catch(err => {
-        //     console.log(err);
-        //     console.log("on we go");
-        // })
-        // .then(data => {
-        //     console.log(data, positionData);
-        // });
-    // setTimer(1000).then(() => {
-    //     console.log("Timer done..!");
+    console.log(timerData, posData);
+    // .then(posData => {
+    //     positionData = posData;
+    //     return setTimer(2000);
     // })
-    //
-    // console.log('Getting Position....');
+    // .catch(err => {
+    //     console.log(err);
+    //     console.log("on we go");
+    // })
+    // .then(data => {
+    //     console.log(data, positionData);
+    // });
+    setTimer(1000).then(() => {
+        console.log("Timer done..!");
+    })
+
+
+
+
+
+    console.log('Getting Position....');
 }
 
 button.addEventListener('click', trackUserHandler);

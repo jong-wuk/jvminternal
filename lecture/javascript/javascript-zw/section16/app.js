@@ -1,8 +1,6 @@
-// 0.2.toString(2) // result '0.001100110011001100110011001100110011001100110011001101'
-// parseInt(10n) - 4
-// 10n - BigInt(4)
-// 10n * 3
+function randomintBetween(min, max){    // min = 5, max = 10
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
-// Number.isNaN(10)
-// Number.isFinite(10)
-// Math.abs(-11);
+
+console.log(randomintBetween(1, 10));

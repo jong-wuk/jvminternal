@@ -31,10 +31,11 @@ function printHobbies(h) {
 
 printHobbies(hobbies);
 let multiplier = 1.1;
+
 function createTaxCalculator(tax) {
     function calculateTax(amount) {
         console.log(multiplier);
-        return amount * tax *multiplier;
+        return amount * tax * multiplier;
     }
 
     return calculateTax;
@@ -50,20 +51,22 @@ console.log(calculateVatAmount(100));
 
 let userName = 'Max';
 
-function greetUser(){
+function greetUser() {
     // let name = 'Anna';
-    console.log("hi"+name);
+    console.log("hi" + name);
 }
+
 let name = 'lexical';
 
 userName = 'Manuel';
 
 greetUser();
 
-(function(){
+(function () {
     var age = 30;
     console.log(age);
 })()
+
 // console.log(age); //Error 발생 "age is not defined"
 
 function powerOf(x, n) {
@@ -76,3 +79,51 @@ function powerOf(x, n) {
 }
 
 console.log(powerOf(2, 3));
+
+const myself = {
+    name: 'Max',
+    friends: [
+        {
+            name: 'Manuel',
+            friends: [
+                {name: "chris",
+                    friends:[
+                        {
+                            name:"wook",
+                            friends:[
+                                {name: "none"}
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            name: "Julia"
+        }
+    ]
+}
+
+function printFriendNames(person) {
+    for (const friends of person.friends) {
+        for (const friendsFriends of friends.friends) {
+
+        }
+    }
+}
+
+function getFreindNames(person) {
+    const collectedNames = [];
+
+    if (!person.friends) {
+        return [];
+    }
+
+    for (const friend of person.friends) {
+        collectedNames.push(friend.name);
+        collectedNames.push(...getFreindNames(friend));
+    }
+    return collectedNames;
+}
+
+console.log(getFreindNames(myself));

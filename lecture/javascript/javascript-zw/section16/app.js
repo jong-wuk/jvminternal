@@ -2,3 +2,7 @@
 // parseInt(10n) - 4
 // 10n - BigInt(4)
 // 10n * 3
+
+// Number.isNaN(10)
+// Number.isFinite(10)
+// Math.abs(-11);

@@ -8,7 +8,10 @@ function sendHttpRequest(method, url, data) {
     const promise = new Promise((resolve, reject) => {
 
     });
-    return fetch(url).then(response=>{
+    return fetch(url,{
+        method:method,
+        body: JSON.stringify(data)
+    }).then(response=>{
         return response.json();
     });
     //

@@ -8,15 +8,25 @@ function sendHttpRequest(method, url, data) {
     const promise = new Promise((resolve, reject) => {
 
     });
-    return fetch(url,{
-        method:method,
+    return fetch(url, {
+        method: method,
         body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json",
             "Set-Cookie": "logined"
         }
-    }).then(response=>{
-        return response.json();
+    }).then(response => {
+        if (response.status >= 200 && response.status < 300) {
+            return response.json();
+        } else {
+            return response.json().then(errData => {
+                console.log(errData);
+                throw new Error('Something Wrong! Server Side');
+            })
+        }
+    }).catch(error => {
+        console.log(error.message);
+        throw new Error('Something Wrong!');
     });
     //
     //     const xhr = new XMLHttpRequest();

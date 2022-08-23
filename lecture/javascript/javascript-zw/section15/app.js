@@ -59,3 +59,9 @@ let name = 'lexical';
 userName = 'Manuel';
 
 greetUser();
+
+(function(){
+    var age = 30;
+    console.log(age);
+})()
+console.log(age); //Error 발생 "age is not defined"

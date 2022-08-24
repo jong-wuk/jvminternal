@@ -11,11 +11,18 @@ function outputResult(result, text) {
 
 buttons.addEventListener('click', function (event) {
     const target = event.target;
-    const action = target.classList[0];
+    const btnText = target.textContent;
     const buttonContent = target.textContent;
-    if (action === "number") {
+    if(btnText ==="="){
+        currentResultOutput.textContent = eval(userInput.valueOf().value);
+    }else if(btnText ==="CLEAR"){
+        userInput.valueOf().value = "";
+        currentResultOutput.textContent = "";
+    }
+    else{
         userInput.valueOf().value += buttonContent;
     }
+
 })
 
 window.addEventListener("keydown", (ev) => {

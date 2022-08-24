@@ -17,7 +17,6 @@ form.addEventListener('submit', addItem)
 clearBtn.addEventListener('click', clearItems);
 
 
-//아이템 초기화
 function clearItems() {
     const items = document.querySelectorAll(".grocery-item");
     if (items.length > 0) {
@@ -30,10 +29,12 @@ function clearItems() {
     setBackToDefault();
 }
 
-function removeTag(value){
+function removeTag(value) {
 
     return value;
 }
+
+
 
 function addItem(e) {
     e.preventDefault();
@@ -55,7 +56,10 @@ function addItem(e) {
                         <i class="fas fa-trash"></i>
                     </button>
                 </div>`;
-
+        const deleteBtn = element.querySelector('.delete-btn');
+        const editBtn = element.querySelector('.edit-btn');
+        deleteBtn.addEventListener('click', deleteItem);
+        editBtn.addEventListener('click', editItem);
 
         list.appendChild(element);
         displayAlert('item added to the list', 'success');
@@ -64,12 +68,36 @@ function addItem(e) {
         addToLocalStorage(id, value);
         setBackToDefault();
     } else if (value && editFlag) {
-        console.log('editing');
+        editElment.innerHTML = value;
+        displayAlert('value changed', 'success');
+        editLocalStorage(editID,value);
+        setBackToDefault();
     } else {
         displayAlert("please enter value", 'danger');
     }
 }
 
+function deleteItem(e) {
+    const element = e.currentTarget.parentElement.parentElement;
+    const id = element.dataset.id;
+    list.removeChild(element);
+    if (list.children.length === 0) {
+        container.classList.remove("show-container");
+    }
+
+    displayAlert('item Removed', 'danger');
+    setBackToDefault();
+    removeFromLocalStorage(id);
+}
+
+function editItem(e) {
+    const element = e.currentTarget.parentElement.parentElement;
+    editElment = e.currentTarget.parentElement.previousElementSibling;
+    grocery.value = editElment.innerHTML;
+    editFlag = true;
+    editID = element.dataset.id;
+    submitBtn.textContent = "수정";
+}
 
 function displayAlert(text, action) {
     alert.textContent = text;
@@ -80,11 +108,6 @@ function displayAlert(text, action) {
         alert.classList.remove(`alert-${action}`);
     }, 1000)
 }
-
-function addToLocalStorage(id, value) {
-    console.log("addToLocalStorage");
-}
-
 function setBackToDefault() {
     grocery.value = '';
     editFlag = false;
@@ -92,6 +115,17 @@ function setBackToDefault() {
     submitBtn.textContent = "추가";
 }
 
-// 삭제버튼
+function addToLocalStorage(id, value) {
 
-// 수정버튼
+}
+
+function removeFromLocalStorage(id) {
+    console.log(`Id is = ${id}`);
+}
+
+
+function editLocalStorage(editID, value) {
+    localStorage.setItem(editID,JSON.stringify(value))
+    const editId = JSON.parse(localStorage.getItem('editID'));
+    console.log(editID);
+}

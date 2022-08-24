@@ -14,13 +14,34 @@ let editID = "";
 form.addEventListener('submit', addItem)
 
 
+clearBtn.addEventListener('click', clearItems);
+
+
+//아이템 초기화
+function clearItems() {
+    const items = document.querySelectorAll(".grocery-item");
+    if (items.length > 0) {
+        items.forEach(function (item) {
+            list.removeChild(item);
+        });
+    }
+    container.classList.remove('show-container');
+    displayAlert('empty list', 'danger');
+    setBackToDefault();
+}
+
+function removeTag(value){
+
+    return value;
+}
+
 function addItem(e) {
     e.preventDefault();
     const value = grocery.valueOf().value;
     const id = new Date().getTime().toString();
+    console.log(removeTag(value));
     if (value && !editFlag) {
         const element = document.createElement("article");
-
         element.classList.add("grocery-item");
         const attribute = document.createAttribute("data-id");
         attribute.value = id;
@@ -34,6 +55,8 @@ function addItem(e) {
                         <i class="fas fa-trash"></i>
                     </button>
                 </div>`;
+
+
         list.appendChild(element);
         displayAlert('item added to the list', 'success');
         container.classList.add('show-container');
@@ -66,5 +89,9 @@ function setBackToDefault() {
     grocery.value = '';
     editFlag = false;
     editID = "";
-    submitBtn.textContent ="추가";
+    submitBtn.textContent = "추가";
 }
+
+// 삭제버튼
+
+// 수정버튼

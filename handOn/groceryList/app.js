@@ -7,7 +7,7 @@ const list = document.querySelector('.grocery-list');
 const clearBtn = document.querySelector('.clear-btn');
 
 
-let editElment;
+let editElement;
 let editFlag = false;
 let editID = "";
 
@@ -69,7 +69,6 @@ function addItem(e) {
     e.preventDefault();
     const value = grocery.valueOf().value;
     const id = new Date().getTime().toString();
-    console.log(removeTag(value));
     if (value && !editFlag) {
         createListItem(id, value);
         displayAlert('item added to the list', 'success');
@@ -78,7 +77,7 @@ function addItem(e) {
         addToLocalStorage(id, value);
         setBackToDefault();
     } else if (value && editFlag) {
-        editElment.innerHTML = value;
+        editElement.innerHTML = value;
         displayAlert('value changed', 'success');
         editLocalStorage(editID, value);
         setBackToDefault();
@@ -102,8 +101,8 @@ function deleteItem(e) {
 
 function editItem(e) {
     const element = e.currentTarget.parentElement.parentElement;
-    editElment = e.currentTarget.parentElement.previousElementSibling;
-    grocery.value = editElment.innerHTML;
+    editElement = e.currentTarget.parentElement.previousElementSibling;
+    grocery.value = editElement.innerHTML;
     editFlag = true;
     editID = element.dataset.id;
     submitBtn.textContent = "수정";
@@ -145,8 +144,7 @@ function removeFromLocalStorageById(id) {
     localStorage.setItem("list", JSON.stringify(items));
 }
 function removeFromLocalStorage() {
-    let items = getLocalStorage();
-
+    getLocalStorage();
     localStorage.removeItem("list");
 }
 
@@ -154,10 +152,10 @@ function getLocalStorage() {
     return localStorage.getItem("list") ? JSON.parse(localStorage.getItem("list")) : [];
 }
 
-function editLocalStorage(editID, value) {
+function editLocalStorage(editedId, value) {
     let items = getLocalStorage();
     items = items.map(function (item) {
-        if (item.id === editID) {
+        if (item.id === editedId) {
             item.value = value;
         }
         return item;

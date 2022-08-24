@@ -13,6 +13,7 @@ let editID = "";
 
 form.addEventListener('submit', addItem)
 
+
 function addItem(e) {
     e.preventDefault();
     const value = grocery.valueOf().value;
@@ -36,6 +37,9 @@ function addItem(e) {
         list.appendChild(element);
         displayAlert('item added to the list', 'success');
         container.classList.add('show-container');
+
+        addToLocalStorage(id, value);
+        setBackToDefault();
     } else if (value && editFlag) {
         console.log('editing');
     } else {
@@ -52,4 +56,15 @@ function displayAlert(text, action) {
         alert.textContent = '';
         alert.classList.remove(`alert-${action}`);
     }, 1000)
+}
+
+function addToLocalStorage(id, value) {
+    console.log("addToLocalStorage");
+}
+
+function setBackToDefault() {
+    grocery.value = '';
+    editFlag = false;
+    editID = "";
+    submitBtn.textContent ="추가";
 }

@@ -11,29 +11,45 @@ let editElment;
 let editFlag = false;
 let editID = "";
 
-form.addEventListener('submit',addItem)
+form.addEventListener('submit', addItem)
 
-function addItem(e){
+function addItem(e) {
     e.preventDefault();
     const value = grocery.valueOf().value;
     const id = new Date().getTime().toString();
-    if(value && !editFlag){
-        console.log('add item to the list');
-    }
-    else if(value && editFlag){
+    if (value && !editFlag) {
+        const element = document.createElement("article");
+
+        element.classList.add("grocery-item");
+        const attribute = document.createAttribute("data-id");
+        attribute.value = id;
+        element.setAttributeNode(attribute);
+        element.innerHTML = ` <p class="title">${value}</p>
+                <div class="btn-container">
+                    <button type="button" class="edit-btn">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button type="button" class="delete-btn">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>`;
+        list.appendChild(element);
+        displayAlert('item added to the list', 'success');
+        container.classList.add('show-container');
+    } else if (value && editFlag) {
         console.log('editing');
-    }
-    else{
-        displayAlert('please enter value', 'danger');
+    } else {
+        displayAlert("please enter value", 'danger');
     }
 }
 
-function displayAlert(text, action){
+
+function displayAlert(text, action) {
     alert.textContent = text;
     alert.classList.add(`alert-${action}`);
 
     setTimeout(function () {
         alert.textContent = '';
         alert.classList.remove(`alert-${action}`);
-    },1000)
+    }, 1000)
 }

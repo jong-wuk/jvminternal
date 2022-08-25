@@ -1,7 +1,7 @@
 
-   html {
-       box-sizing: border-box;
-   }
+html {
+    box-sizing: border-box;
+}
 
 *,
 *::before,
@@ -174,56 +174,80 @@ body {
 .key--operator {
     background-color: #eee;
 }
-.key--clear{
+
+.key--clear {
     background-color: #eee;
     font-size: 0.5em;
     font-weight: 1.2;
 }
+
 .key--equal {
     background-image: linear-gradient(to bottom, #fe886a, #ff7033);
     grid-column: -2;
     grid-row: span 3;
 }
-.colum--span3{
+
+.colum--span3 {
     grid-column: span 3;
 }
-   .row--span3{
+
+.row--span3 {
     grid-row: span 3;
 }
 
-.iconBtn:active{
+.iconBtn:active {
     outline: none;
 }
 
-   .modal {
-       display: none; /* Hidden by default */
-       position: fixed; /* Stay in place */
-       z-index: 1; /* Sit on top */
-       left: 0;
-       top: 0;
-       width: 100%; /* Full width */
-       height: 100%; /* Full height */
-       overflow: auto; /* Enable scroll if needed */
-       background-color: rgb(0,0,0); /* Fallback color */
-       background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-   }
-   .modal-content {
-       background-color: #fefefe;
-       margin: 15% auto; /* 15% from the top and centered */
-       padding: 20px;
-       border: 1px solid #888;
-       width: 80%; /* Could be more or less, depending on screen size */
-   }
-   .close {
-       color: #aaa;
-       float: right;
-       font-size: 28px;
-       font-weight: bold;
-   }
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
 
-   .close:hover,
-   .close:focus {
-       color: black;
-       text-decoration: none;
-       cursor: pointer;
-   }
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (min-width: 393px) {
+    #input-text {
+        width: 372px;
+    }
+
+    #current-calculation {
+        width: 200px;
+        padding-left: 200px;
+    }
+    #current-result{
+        width: 350px;
+        padding-left: 20px;
+    }
+    #results{
+        padding-left: 17px;
+    }
+}

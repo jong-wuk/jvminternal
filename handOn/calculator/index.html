@@ -3,29 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0"/>
+          content="width=device-width, initial-scale=1.0, maximum-scale = 1.0"/>
 
     <title>Calculator</title>
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<div id="LogModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-<!--        계산 기록 로그-->
-        <h2 id="log-calculation">0</h2>
-<!--        계산 결과 로그-->
-        <h2 id="log-calculation-result">0</h2>
-    </div>
-</div>
 
 <section id="calculator">
-    <input type="text" id="input-text" class="calculator__display"/>
+    <textarea readonly id="input-text" class="calculator__display">
+    </textarea>
     <section id="results">
-        <h2 id="current-calculation">0</h2>
-        <h2>Result: <span id="current-result">0</span></h2>
-        <button class="iconBtn"><i class="fa fa-info-circle"></i></button>
+        <h2>TotalResult: <span id="current-result">0</span></h2>
     </section>
     <div id="calc-actions" class="calculator__keys">
         <button type="button" id="btn-clear">CLEAR</button>

@@ -2,16 +2,24 @@ const userInput = document.getElementById("input-text");
 const buttons = document.getElementById("calc-actions");
 const currentResultOutput = document.getElementById("current-result");
 const modal = document.getElementById("LogModal");
-const defaultResult = 0;
-let currentResult = defaultResult;
+const DEFAULT_RESULT = 0;
+const NEWLINE = "\r\n";
+let currentResult = DEFAULT_RESULT;
 
-function resetNumber() {
-    currentResult = 0;
-    currentResultOutput.value = 0;
+function resetValue() {
+    currentResult = DEFAULT_RESULT;
+    currentResultOutput.value = DEFAULT_RESULT;
     userInput.value = '';
 }
 
+function scrollDown() {
+    userInput.value += NEWLINE;
+    userInput.scrollTop = userInput.scrollHeight;
+}
 
+function evaluateResult(curResult) {
+    currentResultOutput.textContent = curResult;
+}
 
 buttons.addEventListener('click', function (event) {
     const target = event.target;
@@ -19,36 +27,40 @@ buttons.addEventListener('click', function (event) {
     const buttonContent = target.textContent;
     if (btnText.includes("=")) {
         currentResult = eval(userInput.valueOf().value);
-        currentResultOutput.textContent = currentResult;
-        userInput.value += "\r\n";
-        // logResult.push(currentResult);
-        userInput.scrollTop = userInput.scrollHeight;
+        evaluateResult(currentResult);
+        scrollDown();
     } else if (btnText.includes("CLEAR")) {
-        resetNumber();
+        resetValue();
     } else {
         userInput.valueOf().value += buttonContent;
     }
 
 })
 
-window.addEventListener("keydown", (ev) => {
-    const regexNum =/\d/;
-    const regexSpecial=/[+\/*-]/;
-    const regexAlphabetic = /[a-zA-z]/;
-    if (regexNum.test(ev.key)) {
-        userInput.valueOf().value += ev.key;
-    } else if (ev.key.includes("Enter")) {
+
+function pressedKeyFor(regexNum, ev, regexSpecial, regexAlphabetic) {
+    let pressedKey = ev.key;
+    if (regexNum.test(pressedKey)) {
+        userInput.valueOf().value += pressedKey;
+    }else if (pressedKey.includes("Enter")) {
+        ev.stopPropagation();
         currentResult = eval(userInput.valueOf().value);
-        currentResultOutput.textContent = currentResult;
-        userInput.value += "\r\n";
-        // logResult.push(currentResult);
-        userInput.scrollTop = userInput.scrollHeight;
-    } else if (regexSpecial.test(ev.key)) {
-        userInput.valueOf().value += ev.key;
-    } else if (regexAlphabetic.test(ev.key)) {
+        evaluateResult(currentResult);
+        scrollDown();
+    } else if (regexSpecial.test(pressedKey)) {
+        userInput.valueOf().value += pressedKey;
+    } else if (regexAlphabetic.test(pressedKey)) {
         ev.stopPropagation();
     }
-})
+}
+
+    window.addEventListener("keydown", (ev) => {
+        const regexNum = /\d/;
+        const regexSpecial = /[+\/*-]/;
+        const regexAlphabetic = /[a-zA-z]/;
+        console.log(ev);
+        pressedKeyFor(regexNum, ev, regexSpecial, regexAlphabetic);
+    });
 
 
 

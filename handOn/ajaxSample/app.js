@@ -9,6 +9,7 @@ const phoneUl = document.getElementById("phone-ul");
 const xmlHttpRequest = new XMLHttpRequest();
 
 RunButton.addEventListener("click", isCheckFunction);
+
 // useCallBack();
 
 function showFuncFor() {
@@ -27,12 +28,14 @@ function isCheckFunction() {
         checkedValue = callBackFnButton.value;
         return checkedValue;
     } else if (promiseButton.checked === true) {
+        fetchPostsUsePromise();
         checkedValue = promiseButton.value;
         return checkedValue;
     } else if (awaitAndSyncButton.checked === true) {
+        fetchPostsUseAwaitAndAsync;
         checkedValue = awaitAndSyncButton.value;
         return checkedValue;
-    }else{
+    } else {
         checkedValue = fetchFnButton.value;
         return checkedValue;
     }
@@ -46,26 +49,55 @@ function renderList(listOfPhone) {
         const phoneLiElement = document.createElement("li");
         let phoneDetailName = phoneDetails.name;
         let imageResource = phoneDetails.productImg;
-        phoneLiElement.classList.add("class",`phone-li`);
+        phoneLiElement.classList.add("class", `phone-li`);
         phoneLiElement.innerHTML = `
             <li id="phone-list">
             <h4>${phoneDetailName}</h4>
             <div id="image-wrapper">
             <img alt="none" src="${imageResource}"></img>
             </div>
-        `
+        `;
         phoneUlElement.appendChild(phoneLiElement);
 
     }
 }
 
-function useCallBack(){
-    xmlHttpRequest.open("GET","/api/phone.list.json");
+function useCallBack() {
+    xmlHttpRequest.open("GET", "/api/phone.list.json");
     xmlHttpRequest.responseType = "json";
-    xmlHttpRequest.onload= function(){
+    xmlHttpRequest.onload = function () {
         const listOfPhone = xmlHttpRequest.response;
         renderList(listOfPhone);
     };
     xmlHttpRequest.send();
 }
+
+function usePromise(method, url) {
+    const promise = new Promise((resolve, reject) => {
+        xmlHttpRequest.open(method, url);
+        xmlHttpRequest.responseType = "json";
+        xmlHttpRequest.onload = function () {
+            const listOfPhone = xmlHttpRequest.response;
+            resolve(listOfPhone);
+
+        };
+        xmlHttpRequest.send();
+    });
+    return promise;
+}
+
+function fetchPostsUsePromise() {
+    const responseData = usePromise("GET", "/api/phone.list.json").then(listOfPhone => {
+        renderList(listOfPhone);
+    });
+    const listOfPhone = responseData;
+    renderList(listOfPhone);
+}
+
+async function fetchPostsUseAwaitAndAsync() {
+    const responseData =usePromise("GET", "/api/phone.list.json");
+    const listOfPhone = responseData;
+    renderList(listOfPhone);
+}
+
 

@@ -1,6 +1,28 @@
- ul > li img{
+
+/*ul > li img{
     max-width: 100%;
-     height: auto;
+     height: 200px;
     object-fit: contain;
-     width: 246px;
- }
+     width: 230px;
+ }*/
+
+ul > li{
+    float: left;
+    width: 230px;
+    height: 300px;
+}
+
+.list-wrapper{
+    width: 900px;
+    height: 300px;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+
+
+
+.button-wrap{
+    display: flex;
+}

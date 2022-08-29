@@ -5,13 +5,15 @@ const fetchFnButton = document.getElementById("fetch");
 const imageWrapperElement = document.getElementById("phone-list-wrapper");
 const RunButton = document.getElementById("runAjax");
 const listElement = document.getElementById("phone-list");
-const phoneUl = document.getElementById("phone-ul");
+const phoneUl = document.getElementById("phone_ul");
+const nextBtn = document.querySelector(".next-button");
+const previousBtn = document.querySelector(".previous-button");
+const listWrapper = document.querySelector(".list-wrapper");
 const xmlHttpRequest = new XMLHttpRequest();
 
 RunButton.addEventListener("click", isCheckFunction);
-
-// useCallBack();
-
+nextBtn.addEventListener("click",next);
+previousBtn.addEventListener("click",previous);
 function showFuncFor() {
 
     let checkedButtonValue = isCheckFunction();
@@ -51,11 +53,10 @@ function renderList(listOfPhone) {
         let imageResource = phoneDetails.productImg;
         phoneLiElement.classList.add("class", `phone-li`);
         phoneLiElement.innerHTML = `
-            <li id="phone-list">
+           <div class="carousel">
             <h4>${phoneDetailName}</h4>
-            <div id="image-wrapper">
-            <img alt="none" src="${imageResource}"></img>
-            </div>
+                <img alt="none" src="${imageResource}" style="height: 200px; width: 230px;"/>
+                </div>
         `;
         phoneUlElement.appendChild(phoneLiElement);
 
@@ -106,4 +107,32 @@ function getPhonesUseAwaitAndAsync() {
 
 }
 
+function next(){
+    let y = listWrapper.scrollTop;
+    let x = listWrapper.scrollLeft;
+    let disabled =  true;
+    if(listWrapper.scrollTop >= 900){
+        console.log(nextBtn.disabled);
+        nextBtn.disabled = disabled;
+    }else{
+    listWrapper.scrollTo(x,y+300);
+        console.log(nextBtn.disabled);
+        nextBtn.disabled = !disabled;
 
+    }
+
+
+}
+
+function previous(){
+let y = listWrapper.scrollTop;
+let x = listWrapper.scrollLeft;
+    //만약 wrapper의 y좌표 값이 0이면 previous버튼 해제
+    if(listWrapper.scrollTop === 0){
+        previousBtn.disabled = true;
+    }else {
+        listWrapper.scrollTo(x, y - 300);
+    }
+
+    //아니면 기존 y좌표 -300
+}

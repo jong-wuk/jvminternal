@@ -90,19 +90,20 @@ function getPhonesUsePromise() {
         renderList(listOfPhone);
     });
 }
-async function useAsyncAwait(method,url){
+
+function useAsyncAwait(method, url) {
     xmlHttpRequest.open(method, url);
     xmlHttpRequest.responseType = "json";
-    xmlHttpRequest.onload = function () {
-        return xmlHttpRequest.response;
+    xmlHttpRequest.onload = async function () {
+        const listOfPhone = xmlHttpRequest.response;
+        await renderList(listOfPhone);
     };
     xmlHttpRequest.send();
 }
 
- function getPhonesUseAwaitAndAsync() {
-    const responseData = useAsyncAwait("GET", "/api/phone.list.json");
-    // let listOfPhone = ;
-    renderList(responseData);
+function getPhonesUseAwaitAndAsync() {
+    useAsyncAwait("GET", "/api/phone.list.json");
+
 }
 
 

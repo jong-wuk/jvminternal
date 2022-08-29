@@ -28,7 +28,7 @@ function isCheckFunction() {
         checkedValue = callBackFnButton.value;
         return checkedValue;
     } else if (promiseButton.checked === true) {
-        fetchPostsUsePromise();
+        getPhonesUsePromise();
         checkedValue = promiseButton.value;
         return checkedValue;
     } else if (awaitAndSyncButton.checked === true) {
@@ -73,7 +73,7 @@ function useCallBack() {
 }
 
 function usePromise(method, url) {
-    const promise = new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         xmlHttpRequest.open(method, url);
         xmlHttpRequest.responseType = "json";
         xmlHttpRequest.onload = function () {
@@ -83,10 +83,9 @@ function usePromise(method, url) {
         };
         xmlHttpRequest.send();
     });
-    return promise;
 }
 
-function fetchPostsUsePromise() {
+function getPhonesUsePromise() {
     const responseData = usePromise("GET", "/api/phone.list.json").then(listOfPhone => {
         renderList(listOfPhone);
     });
@@ -96,7 +95,8 @@ function fetchPostsUsePromise() {
 
 async function fetchPostsUseAwaitAndAsync() {
     const responseData =usePromise("GET", "/api/phone.list.json");
-    const listOfPhone = responseData;
+    // let listOfPhone = ;
+   const  listOfPhone= responseData;
     renderList(listOfPhone);
 }
 

@@ -32,7 +32,7 @@ function isCheckFunction() {
         checkedValue = promiseButton.value;
         return checkedValue;
     } else if (awaitAndSyncButton.checked === true) {
-        fetchPostsUseAwaitAndAsync;
+        getPhonesUseAwaitAndAsync();
         checkedValue = awaitAndSyncButton.value;
         return checkedValue;
     } else {
@@ -86,18 +86,23 @@ function usePromise(method, url) {
 }
 
 function getPhonesUsePromise() {
-    const responseData = usePromise("GET", "/api/phone.list.json").then(listOfPhone => {
+    usePromise("GET", "/api/phone.list.json").then(listOfPhone => {
         renderList(listOfPhone);
     });
-    const listOfPhone = responseData;
-    renderList(listOfPhone);
+}
+async function useAsyncAwait(method,url){
+    xmlHttpRequest.open(method, url);
+    xmlHttpRequest.responseType = "json";
+    xmlHttpRequest.onload = function () {
+        return xmlHttpRequest.response;
+    };
+    xmlHttpRequest.send();
 }
 
-async function fetchPostsUseAwaitAndAsync() {
-    const responseData =usePromise("GET", "/api/phone.list.json");
+ function getPhonesUseAwaitAndAsync() {
+    const responseData = useAsyncAwait("GET", "/api/phone.list.json");
     // let listOfPhone = ;
-   const  listOfPhone= responseData;
-    renderList(listOfPhone);
+    renderList(responseData);
 }
 
 

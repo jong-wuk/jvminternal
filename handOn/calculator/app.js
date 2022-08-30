@@ -38,12 +38,15 @@ buttons.addEventListener('click', function (event) {
 })
 
 
-function pressedKeyFor(regexNum, ev, regexSpecial, regexAlphabetic) {
+function pressedKeyFor(ev) {
     let pressedKey = ev.key;
+    const regexNum = /\d/;
+    const regexSpecial = /[+\/*-]/;
+    const regexAlphabetic = /[a-zA-z]/;
+    console.log(pressedKey);
     if (regexNum.test(pressedKey)) {
         userInput.valueOf().value += pressedKey;
     }else if (pressedKey.includes("Enter")) {
-        ev.stopPropagation();
         currentResult = eval(userInput.valueOf().value);
         evaluateResult(currentResult);
         scrollDown();
@@ -55,11 +58,8 @@ function pressedKeyFor(regexNum, ev, regexSpecial, regexAlphabetic) {
 }
 
     window.addEventListener("keydown", (ev) => {
-        const regexNum = /\d/;
-        const regexSpecial = /[+\/*-]/;
-        const regexAlphabetic = /[a-zA-z]/;
-        console.log(ev);
-        pressedKeyFor(regexNum, ev, regexSpecial, regexAlphabetic);
+
+        pressedKeyFor(ev);
     });
 
 

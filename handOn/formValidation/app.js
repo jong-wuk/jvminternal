@@ -6,13 +6,15 @@ const passwordCheck = document.getElementById("passwordCheck");
 const birth = document.getElementById("birth");
 const birthDay = document.getElementById("day");
 const inputRadioButtons = document.querySelectorAll(".input-radio");
-const arrInterestCheckbox = document.getElementsByName("hobby");
+const arrHobbyCheckbox = document.getElementsByName("hobby");
+const interest = document.getElementById("interest");
+const arrInterestSelectBoxOptions = document.getElementById("interest").options;
 
 form.addEventListener('submit', formEvent);
-
 function formEvent(ev) {
     ev.preventDefault();
     if (checkRequired([username, email, password, passwordCheck, birth,birthDay])) {
+        const selectedValueArray = getSelectedValueArray(arrInterestSelectBoxOptions);
         checkLength(username, 3);
         checkLength(password, 8);
         checkPassword(password);
@@ -21,7 +23,8 @@ function formEvent(ev) {
         checkBirth(birth);
         checkBirthDay(birthDay,0,31);
         checkGender(inputRadioButtons);
-        checkHobbyChecking(arrInterestCheckbox);
+        checkHobbyChecking(arrHobbyCheckbox);
+        checkInterestSelected(selectedValueArray);
     }
 }
 
@@ -139,3 +142,32 @@ function checkHobbyChecking(inputs){
         showError(inputs[0],"관심사를 최소 1개 이상 선택해 주세요");
     }
 }
+
+function getSelectedValueArray(inputs){
+    var result = [];
+    var options = inputs;
+    var opt;
+    for(var i=0; i<inputs.length;i++){
+        opt = options[i];
+
+        if(opt.selected){
+            result.push(opt.value || opt.text);
+        }
+    }
+    console.log(result);
+    return result;
+}
+
+function checkInterestSelected(result){
+    let flag = false;
+    result.forEach(text=>{
+        if(text ==="choose"){
+            showError(interest, "취미를 최소 1개 이상 선택해 주세요");
+            flag = true;
+        }
+    })
+    if(!flag){
+        showSuccess(interest);
+    }
+}
+

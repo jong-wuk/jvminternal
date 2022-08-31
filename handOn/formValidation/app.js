@@ -12,6 +12,7 @@ function formEvent(ev) {
     if (checkRequired([username, email, password, passwordCheck])) {
         checkLength(username, 3);
         checkLength(password, 8);
+        checkPassword(password);
         checkPasswordMatch(password, passwordCheck);
         checkEmail(email);
     }
@@ -35,7 +36,7 @@ function showSuccess(input) {
 }
 
 function checkEmail(input) {
-    const regEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const regEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
     if (!checkRequired([input])) {
         if (regEmail.test(input.value.trim())) {
             showSuccess(input);
@@ -65,9 +66,16 @@ function checkLength(input, min) {
         showSuccess(input);
     }
 }
-//TODO 패스워드 체크 작성 중
+
 function checkPassword(input) {
     const regPassword = /(?=.*\d)((?=.*[A-Z])(?=.*[a-z])(?=.*\W)).{8,}/; //패스워드는 8글자 이상, 영문자 대,소문자, 특수기호를 포함해야 됩니다.
+    if (!checkRequired([input])) {
+        if (regPassword.test(input.value.trim())) {
+            showSuccess(input);
+        } else {
+            showError(input, `${getFieldName(input)}는 8글자 이상, 영문자 대,소문자, 특수기호를 포함해야 됩니다.`);
+        }
+    }
 }
 
 function checkPasswordMatch(input1, input2) {

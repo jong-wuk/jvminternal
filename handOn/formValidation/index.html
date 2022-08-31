@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="container">
-    <form class="form" id="form">
+    <form class="form" id="form" autocomplete="off">
         <h2>회원가입 검증</h2>
         <div class="form-control">
             <label for="userId">ID</label>
@@ -53,15 +53,16 @@
                 <option value="11월">11월</option>
                 <option value="12월">12월</option>
             </select>
+            <input type="number" id="day" placeholder="일" min="1" max="31">
             <small>에러 메세지</small>
         </div>
         <div class="form-control">
             <label for="radio-sex">성별</label>
-            <input type="radio" id="radio-sex" name="sex" value="sex" checked>
+            <input type="radio" id="radio-sex" class="input-radio" name="sex" value="sex" checked>
             <label for="radio-man">남자</label>
-            <input type="radio" id="radio-man" name="sex" value="man">
+            <input type="radio" id="radio-man" class="input-radio" name="sex" value="man">
             <label for="radio-woman">여자</label>
-            <input type="radio" id="radio-woman" name="sex" value="woman">
+            <input type="radio" id="radio-woman" class="input-radio" name="sex" value="woman">
             <small>에러 메세지</small>
         </div>
         <div>

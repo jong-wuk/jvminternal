@@ -3,23 +3,26 @@ const username = document.getElementById("userId");
 const password = document.getElementById("password");
 const email = document.getElementById("email");
 const passwordCheck = document.getElementById("passwordCheck");
+const birth = document.getElementById("birth");
+const birthDay = document.getElementById("day");
 
 
 form.addEventListener('submit', formEvent)
 
 function formEvent(ev) {
     ev.preventDefault();
-    if (checkRequired([username, email, password, passwordCheck])) {
+    if (checkRequired([username, email, password, passwordCheck, birth,birthDay])) {
         checkLength(username, 3);
         checkLength(password, 8);
         checkPassword(password);
         checkPasswordMatch(password, passwordCheck);
         checkEmail(email);
+        checkBirth(birth);
+        checkBirthDay(birthDay,0,31);
     }
 }
 
 function getFieldName(input) {
-
     return input.labels[0].textContent;
 }
 
@@ -81,5 +84,28 @@ function checkPassword(input) {
 function checkPasswordMatch(input1, input2) {
     if (input1.value !== input2.value) {
         showError(input2, "패스워드가 일치하지 않습니다.");
+    }
+}
+
+function checkBirth(input) {
+    const regBirth = /^[0-9]{4}/;
+    const birthYear = input.value;
+    if (regBirth.test(birthYear)) {
+        if (parseInt(birthYear) <= 1899) {
+            showError(input, `${getFieldName(input)}은 1900이상 입니다.`);
+        } else {
+            showSuccess(input);
+        }
+    }
+
+}
+
+function checkBirthDay(input,minBirthDay,maxBirthDay){
+    const birthDayValue = input.value;
+    if(birthDayValue>minBirthDay && birthDayValue<=maxBirthDay){
+        console.log("success");
+        showSuccess(input);
+    }else{
+    showError(input,`${getFieldName(input)}은 1과 31사이의 숫자 입니다.`)
     }
 }

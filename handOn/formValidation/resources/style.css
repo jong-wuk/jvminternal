@@ -78,6 +78,16 @@ div{
     border-color: var(--error-color);
 }
 
+/*.form-control.error input[type='radio']:checked{
+    appearance: none;
+    width:16px;
+    height:16px;
+    border:1px solid var(--error-color);
+    border-radius:50%;
+    outline:none;
+    background:white;
+}*/
+
 .form-control small{
     color : var(--error-color);
     position: relative;

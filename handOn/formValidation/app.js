@@ -5,9 +5,10 @@ const email = document.getElementById("email");
 const passwordCheck = document.getElementById("passwordCheck");
 const birth = document.getElementById("birth");
 const birthDay = document.getElementById("day");
+const inputRadioButtons = document.querySelectorAll(".input-radio");
+const arrInterestCheckbox = document.getElementsByName("hobby");
 
-
-form.addEventListener('submit', formEvent)
+form.addEventListener('submit', formEvent);
 
 function formEvent(ev) {
     ev.preventDefault();
@@ -19,8 +20,12 @@ function formEvent(ev) {
         checkEmail(email);
         checkBirth(birth);
         checkBirthDay(birthDay,0,31);
+        checkGender(inputRadioButtons);
+        checkHobbyChecking(arrInterestCheckbox);
     }
 }
+
+
 
 function getFieldName(input) {
     return input.labels[0].textContent;
@@ -106,6 +111,31 @@ function checkBirthDay(input,minBirthDay,maxBirthDay){
         console.log("success");
         showSuccess(input);
     }else{
-    showError(input,`${getFieldName(input)}은 1과 31사이의 숫자 입니다.`)
+    showError(input,`${getFieldName(input)}은 1과 31사이의 숫자 입니다.`);
+    }
+}
+
+function checkGender(inputs){
+    let selected = false;
+    inputs.forEach((input)=>{
+        if(input.checked){
+            showSuccess(input);
+            selected = true;
+        }
+    })
+    if(!selected){
+        showError(inputs[0],"성별을 선택해 주세요!")
+    }
+}
+function checkHobbyChecking(inputs){
+    let checked = false;
+    inputs.forEach((input)=>{
+        if(input.checked){
+            showSuccess(input);
+            checked = true;
+        }
+    })
+    if (!checked){
+        showError(inputs[0],"관심사를 최소 1개 이상 선택해 주세요");
     }
 }

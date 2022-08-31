@@ -65,17 +65,32 @@
             <small>에러 메세지</small>
         </div>
         <div class="form-control">
-            <label for="radio-sex">성별</label>
-            <input type="radio" id="radio-sex" class="input-radio" name="sex" value="sex" checked>
             <label for="radio-man">남자</label>
             <input type="radio" id="radio-man" class="input-radio" name="sex" value="man">
             <label for="radio-woman">여자</label>
             <input type="radio" id="radio-woman" class="input-radio" name="sex" value="woman">
             <small>에러 메세지</small>
         </div>
-        <div>
-            <label for="age">나이</label>
-            <input type="number" id="age" name="age" min="1" max="150">
+
+        <div class="form-control">
+            <label for="entertainment">연예</label>
+            <input type="checkbox" id="entertainment" name="hobby">
+            <label for="sports">스포츠</label>
+            <input type="checkbox" id="sports" name="hobby">
+            <label for="sports">IT</label>
+            <input type="checkbox" id="it" name="hobby">
+            <small>에러 메세지</small>
+        </div>
+
+        <div class="form-control">
+            <label for="interest">취미</label>
+            <select name="interest" id="interest" multiple>
+            <option value="reading">독서</option>
+            <option value="listening">음악감상</option>
+            <option value="listening">영화보기</option>
+            <option value="listening">운동</option>
+            <option value="listening">게임</option>
+            </select>
             <small>에러 메세지</small>
         </div>
         <div class="form-control">

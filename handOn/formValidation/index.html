@@ -5,10 +5,12 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Form Validation</title>
+    <link href="./resources/style.css" rel="stylesheet">
+
 </head>
 <body>
 <div class="container">
-    <form>
+    <form class="form" id="form">
         <h2>회원가입 검증</h2>
         <div class="form-control">
             <label for="userId">ID</label>
@@ -23,7 +25,7 @@
         </div>
 
         <div class="form-control">
-            <label for="passwordCheck">ID</label>
+            <label for="passwordCheck">패스워드 확인</label>
             <input type="password" id="passwordCheck" placeholder="패스워드를 다시 한번 입력해주세요">
             <small>에러 메세지</small>
         </div>
@@ -54,18 +56,17 @@
             <small>에러 메세지</small>
         </div>
         <div class="form-control">
-            <input type="radio" id="radio-sex" name="sex" value="sex" checked>
             <label for="radio-sex">성별</label>
-            <input type="radio" id="radio-man" name="sex" value="man">
+            <input type="radio" id="radio-sex" name="sex" value="sex" checked>
             <label for="radio-man">남자</label>
-            <input type="radio" id="radio-woman" name="sex" value="woman">
+            <input type="radio" id="radio-man" name="sex" value="man">
             <label for="radio-woman">여자</label>
+            <input type="radio" id="radio-woman" name="sex" value="woman">
             <small>에러 메세지</small>
         </div>
         <div>
-            <input type="range" id="age" name="age" min="1" max="150">
             <label for="age">나이</label>
-            <b>0</b>
+            <input type="number" id="age" name="age" min="1" max="150">
             <br>
             <small>에러 메세지</small>
         </div>
@@ -90,9 +91,11 @@
             <label for="disagree">비동의</label>
             <input type="checkbox" id="disagree" name="disagree">
         </div>
+        <button type="submit">Submit</button>
     </form>
 
 </div>
 
+<script src="./app.js"></script>
 </body>
 </html>

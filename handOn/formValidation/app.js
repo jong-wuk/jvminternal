@@ -12,6 +12,8 @@ const arrInterestSelectBoxOptions = document.getElementById("interest").options;
 const zipCode = document.getElementById("zip");
 const detailAddress = document.getElementById("detailAddress");
 const phoneNumber = document.getElementById("phoneNumber");
+
+phoneNumber.onkeyup = autoHyphenPhoneNumber;
 form.addEventListener('submit', formEvent);
 
 function formEvent(ev) {
@@ -203,17 +205,37 @@ function checkDetailAddress(input) {
 
 function checkPhoneNumber(input) {
     let phoneNumberValue = input.value;
-    const convertedPhoneNumberValue = convertPhoneNumber(phoneNumberValue);
-    const checkedNumberWithRegex = /^[0-9]{3}[-]+[0-9]{4}[-]+[0-9]{4}$/.test(convertedPhoneNumberValue);
-    if (checkedNumberWithRegex && phoneNumberValue.length < 12) {
+    console.log(phoneNumberValue);
+    const checkedNumberWithRegex = /^[0-9]{3}[-]+[0-9]{4}[-]+[0-9]{4}$/.test(phoneNumberValue);
+    if (checkedNumberWithRegex && phoneNumberValue.length <= 13) {
         showSuccess(input);
-        input.value = phoneNumberValue.replaceAll(phoneNumberValue,convertedPhoneNumberValue);
-        console.log(phoneNumberValue);
+        console.log(phoneNumberValue.length);
     } else {
-        showError(input, "핸드폰 번호를 형식에 맞게 입력해주세요(010포함 11자리 숫자입니다.)");
+        showError(input, "핸드폰 번호를 입력해주세요.");
     }
 }
 
-function convertPhoneNumber(numberBeConverted) {
-    return numberBeConverted.substring(0, 3) + "-" + numberBeConverted.substring(3, 7) + "-" + numberBeConverted.substring(7, 11);
+
+function autoHyphenPhoneNumber(){
+    this.value = this.value.replace(/[^0-9]/g, "");
+
+    const value = this.value.split("");
+
+    const textArr = [
+        // 첫번째 구간 (00 or 000)
+        [0, value.length > 9 ? 3 : 2],
+        // 두번째 구간 (000 or 0000)
+        [0, value.length > 10 ? 4 : 3],
+        // 남은 마지막 모든 숫자
+        [0, 4]
+    ];
+
+    this.value = textArr
+        .map(function(v)  {
+            return value.splice(v[0], v[1]).join("")
+        })
+        .filter(function(text) {
+            return text
+        })
+        .join("-");
 }

@@ -14,8 +14,20 @@ const detailAddress = document.getElementById("detailAddress");
 const phoneNumber = document.getElementById("phoneNumber");
 const selfIntroduction = document.getElementById("selfIntroduction");
 const selfIntroductionTextLengthWrap = document.getElementById("selfIntroduction_textLength_wrap");
+const dateBirth = document.getElementById("dateBirth");
+
 const SELFINTRODUCTION_MIN_VALUE = 10;
 const SELFINTRODUCTION_MAX_VALUE = 100;
+
+
+
+function checkEnteredDateBirth(input) {
+    if(input.value === ''){
+        showError(input, "생년월일을 입력 또는 선택해주세요");
+    }else{
+        showSuccess(input);
+    }
+}
 
 phoneNumber.onkeyup = autoHyphenPhoneNumber;
 selfIntroduction.onkeyup = getCurrentTextLength;
@@ -39,7 +51,8 @@ function formEvent(ev) {
         checkZipcode(zipCode);
         checkDetailAddress(detailAddress);
         checkPhoneNumber(phoneNumber);
-        checkSelfIntroduction(selfIntroduction);
+        getSelfIntroduction(selfIntroduction);
+        checkEnteredDateBirth(dateBirth);
     }
 }
 
@@ -62,7 +75,7 @@ function showErrorTextColor(input) {
 
 function showSuccess(input) {
     const formControl = input.parentElement;
-    formControl.className = 'selfIntroduction-textLength success';
+    formControl.className = 'form-control success';
 }
 
 function showSuccessTextColor(input) {
@@ -76,7 +89,7 @@ function changeTextLimit(input) {
     let textValue;
     textValue = input.value;
     textLength = textValue.length;
-    if(textLength > SELFINTRODUCTION_MAX_VALUE){
+    if (textLength > SELFINTRODUCTION_MAX_VALUE) {
         input.blur();
         input.value = textValue.substring(0, 100);
         input.focus();
@@ -270,20 +283,21 @@ function autoHyphenPhoneNumber() {
         .join("-");
 }
 
-function checkSelfIntroduction(input) {
+function getSelfIntroduction(input) {
     const selfIntroductionValue = input.value;
     const selfIntroductionValueLength = selfIntroductionValue.length;
 
     if (selfIntroductionValueLength <= SELFINTRODUCTION_MIN_VALUE) {
         showError(input, "자기소개를 최소 10글자 이상 입력해주세요.");
+        return;
     }
     if (selfIntroductionValueLength >= SELFINTRODUCTION_MAX_VALUE) {
         showError(input, "자기소개는 최대 100글자까지 입력할 수 있습니다.");
     } else {
         showSuccess(input);
-        console.log("성공" + selfIntroductionValueLength);
     }
 }
+
 
 
 function getCurrentTextLength() {

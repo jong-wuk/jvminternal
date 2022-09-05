@@ -9,8 +9,10 @@ const inputRadioButtons = document.querySelectorAll(".input-radio");
 const arrHobbyCheckbox = document.getElementsByName("hobby");
 const interest = document.getElementById("interest");
 const arrInterestSelectBoxOptions = document.getElementById("interest").options;
+const zipCode = document.getElementById("zip");
 
 form.addEventListener('submit', formEvent);
+
 function formEvent(ev) {
     ev.preventDefault();
     if (checkRequired([username, email, password, passwordCheck, birth,birthDay])) {
@@ -25,6 +27,7 @@ function formEvent(ev) {
         checkGender(inputRadioButtons);
         checkHobbyChecking(arrHobbyCheckbox);
         checkInterestSelected(selectedValueArray);
+        checkZipcode(zipCode);
     }
 }
 
@@ -168,6 +171,21 @@ function checkInterestSelected(result){
     })
     if(!flag){
         showSuccess(interest);
+    }
+}
+
+function checkZipcode(input){
+    const zipCodeRegex = /^\d{5}/
+    const zipCodeValue = input.value;
+    console.log(zipCodeValue.length);
+    if(zipCodeValue.length > 5){
+        showError(input,"우편번호는 최대 5글자 까지 입니다.");
+    }else{
+        if(zipCodeRegex.test(zipCodeValue)){
+            showSuccess(input);
+        }else{
+            showError(input, "숫자만 입력해 주세요!");
+        }
     }
 }
 

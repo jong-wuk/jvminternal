@@ -22,6 +22,7 @@ function evaluateResult(curResult) {
 }
 
 buttons.addEventListener('click', function (event) {
+    console.log(this);
     const target = event.target;
     const btnText = target.textContent;
     const buttonContent = target.textContent;
@@ -58,7 +59,7 @@ function pressedKeyFor(ev) {
 }
 
     window.addEventListener("keydown", (ev) => {
-
+        console.log(this);
         pressedKeyFor(ev);
     });
 

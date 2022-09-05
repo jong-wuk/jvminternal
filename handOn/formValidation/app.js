@@ -16,6 +16,8 @@ const selfIntroduction = document.getElementById("selfIntroduction");
 const selfIntroductionTextLengthWrap = document.getElementById("selfIntroduction_textLength_wrap");
 const dateBirth = document.getElementById("dateBirth");
 const age = document.getElementById("age");
+const profilePicture = document.getElementById("profilePicture");
+const preview = profilePicture.nextElementSibling;
 const SELFINTRODUCTION_MIN_VALUE = 10;
 const SELFINTRODUCTION_MAX_VALUE = 100;
 
@@ -23,7 +25,20 @@ const SELFINTRODUCTION_MAX_VALUE = 100;
 phoneNumber.onkeyup = autoHyphenPhoneNumber;
 selfIntroduction.onkeyup = getCurrentTextLength;
 
+
+
+profilePicture.addEventListener('change', updateImageDisplay);
 form.addEventListener('submit', formEvent);
+
+function checkProfilePicture(input) {
+    let uploadImageFileCount = input.files.length;
+    console.log(uploadImageFileCount);
+    if(uploadImageFileCount === 0){
+        showError(input, "프로필 사진을 업로드해주세요.");
+    }else{
+        showSuccess(input);
+    }
+}
 
 function formEvent(ev) {
     ev.preventDefault();
@@ -45,6 +60,7 @@ function formEvent(ev) {
         getSelfIntroduction(selfIntroduction);
         checkEnteredDateBirth(dateBirth);
         checkNumber(age);
+        checkProfilePicture(profilePicture);
     }
 }
 
@@ -336,5 +352,18 @@ function checkNumber(input) {
         showError(input, "나이는 1~99까지 입력 할 수 있습니다.");
     }else{
         showSuccess(input);
+    }
+}
+
+function updateImageDisplay() {
+    console.log(this.nextElementSibling);
+    const currentFile = profilePicture.files[0];
+    console.log(currentFile);
+    const image = document.createElement("img");
+    image.style.width = '100px';
+    image.src = URL.createObjectURL(currentFile);
+    this.nextElementSibling.appendChild(image);
+    if(this.nextElementSibling.hasChildNodes()){
+        this.nextElementSibling.removeChild(this.nextElementSibling.firstChild);
     }
 }

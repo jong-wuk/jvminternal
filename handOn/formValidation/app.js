@@ -12,8 +12,14 @@ const arrInterestSelectBoxOptions = document.getElementById("interest").options;
 const zipCode = document.getElementById("zip");
 const detailAddress = document.getElementById("detailAddress");
 const phoneNumber = document.getElementById("phoneNumber");
+const selfIntroduction = document.getElementById("selfIntroduction");
+const selfIntroductionTextLengthWrap = document.getElementById("selfIntroduction_textLength_wrap");
+const SELFINTRODUCTION_MIN_VALUE = 10;
+const SELFINTRODUCTION_MAX_VALUE = 100;
 
 phoneNumber.onkeyup = autoHyphenPhoneNumber;
+selfIntroduction.onkeyup = getCurrentTextLength;
+
 form.addEventListener('submit', formEvent);
 
 function formEvent(ev) {
@@ -33,6 +39,7 @@ function formEvent(ev) {
         checkZipcode(zipCode);
         checkDetailAddress(detailAddress);
         checkPhoneNumber(phoneNumber);
+        checkSelfIntroduction(selfIntroduction);
     }
 }
 
@@ -48,9 +55,32 @@ function showError(input, message) {
     small.innerText = message;
 }
 
+function showErrorTextColor(input) {
+    const selfIntroductionTextLengthPtag = input.nextElementSibling;
+    selfIntroductionTextLengthPtag.className = "selfIntroduction-textLength error";
+}
+
 function showSuccess(input) {
     const formControl = input.parentElement;
-    formControl.className = 'form-control success';
+    formControl.className = 'selfIntroduction-textLength success';
+}
+
+function showSuccessTextColor(input) {
+    const selfIntroductionTextLengthPtag = input.nextElementSibling;
+    selfIntroductionTextLengthPtag.className = "selfIntroduction-textLength success";
+}
+
+
+function changeTextLimit(input) {
+    let textLength;
+    let textValue;
+    textValue = input.value;
+    textLength = textValue.length;
+    if(textLength > SELFINTRODUCTION_MAX_VALUE){
+        input.blur();
+        input.value = textValue.substring(0, 100);
+        input.focus();
+    }
 }
 
 function checkEmail(input) {
@@ -216,7 +246,7 @@ function checkPhoneNumber(input) {
 }
 
 
-function autoHyphenPhoneNumber(){
+function autoHyphenPhoneNumber() {
     this.value = this.value.replace(/[^0-9]/g, "");
 
     const value = this.value.split("");
@@ -231,11 +261,46 @@ function autoHyphenPhoneNumber(){
     ];
 
     this.value = textArr
-        .map(function(v)  {
+        .map(function (v) {
             return value.splice(v[0], v[1]).join("")
         })
-        .filter(function(text) {
+        .filter(function (text) {
             return text
         })
         .join("-");
+}
+
+function checkSelfIntroduction(input) {
+    const selfIntroductionValue = input.value;
+    const selfIntroductionValueLength = selfIntroductionValue.length;
+
+    if (selfIntroductionValueLength <= SELFINTRODUCTION_MIN_VALUE) {
+        showError(input, "자기소개를 최소 10글자 이상 입력해주세요.");
+    }
+    if (selfIntroductionValueLength >= SELFINTRODUCTION_MAX_VALUE) {
+        showError(input, "자기소개는 최대 100글자까지 입력할 수 있습니다.");
+    } else {
+        showSuccess(input);
+        console.log("성공" + selfIntroductionValueLength);
+    }
+}
+
+
+function getCurrentTextLength() {
+    let currentTextLength;
+    let currentSelfIntroductionTextLength;
+    currentTextLength = this.value.length;
+    currentSelfIntroductionTextLength = `(${currentTextLength}/100)`;
+    selfIntroductionTextLengthWrap.firstElementChild.innerHTML = currentSelfIntroductionTextLength;
+    changeTextLimit(this);
+    if (currentTextLength <= 10) {
+        showErrorTextColor(this);
+    } else {
+        if (currentTextLength >= 100) {
+            alert("글자수는 100자 제한 입니다.");
+            showErrorTextColor(this);
+        } else {
+            showSuccessTextColor(this);
+        }
+    }
 }

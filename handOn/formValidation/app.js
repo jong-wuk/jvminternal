@@ -152,10 +152,10 @@ function checkHobbyChecking(inputs) {
 }
 
 function getSelectedValueArray(inputs) {
-    var result = [];
-    var options = inputs;
-    var opt;
-    for (var i = 0; i < inputs.length; i++) {
+    let result = [];
+    let options = inputs;
+    let opt;
+    for (let i = 0; i < inputs.length; i++) {
         opt = options[i];
 
         if (opt.selected) {

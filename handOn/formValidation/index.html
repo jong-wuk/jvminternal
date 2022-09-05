@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Form Validation</title>
+    <link href="./resources/style.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+    <form class="form" id="form" autocomplete="off">
+        <h2>회원가입 검증</h2>
+        <div class="form-control">
+            <label for="userId">ID</label>
+            <input type="text" id="userId" placeholder="아이디를 입력해주세요.">
+            <small>에러 메세지</small>
+        </div>
+
+        <div class="form-control">
+            <label for="password">패스워드</label>
+            <input type="password" id="password" placeholder="패스워드를 입력해주세요.">
+            <small>에러 메세지</small>
+        </div>
+
+        <div class="form-control">
+            <label for="passwordCheck">패스워드 확인</label>
+            <input type="password" id="passwordCheck" placeholder="패스워드를 다시 한번 입력해주세요">
+            <small>에러 메세지</small>
+        </div>
+
+        <div class="form-control">
+            <label for="email">이메일</label>
+            <input type="email" id="email" placeholder="이메일을 입력해주세요">
+            <small>에러 메세지</small>
+        </div>
+
+        <div class="form-control">
+            <label for="birth">년</label>
+            <input type="text" id="birth" placeholder="년(4자)"/>
+            <small>에러 메세지</small>
+        </div>
+        <div class="form-control">
+            <label for="birthMonth">월</label>
+            <select name="month" id="birthMonth">
+                <option value="1월">1월</option>
+                <option value="2월">2월</option>
+                <option value="3월">3월</option>
+                <option value="4월">4월</option>
+                <option value="5월">5월</option>
+                <option value="6월">6월</option>
+                <option value="7월">7월</option>
+                <option value="8월">8월</option>
+                <option value="9월">9월</option>
+                <option value="10월">10월</option>
+                <option value="11월">11월</option>
+                <option value="12월">12월</option>
+            </select>
+            <small>에러 메세지</small>
+        </div>
+        <div class="form-control">
+            <label for="day">일</label>
+            <input type="number" id="day" placeholder="일">
+            <small>에러 메세지</small>
+        </div>
+        <div class="form-control">
+            <label for="radio-man">남자</label>
+            <input type="radio" id="radio-man" class="input-radio" name="sex" value="man">
+            <label for="radio-woman">여자</label>
+            <input type="radio" id="radio-woman" class="input-radio" name="sex" value="woman">
+            <small>에러 메세지</small>
+        </div>
+
+        <div class="form-control">
+            <label for="entertainment">연예</label>
+            <input type="checkbox" id="entertainment" name="hobby">
+            <label for="sports">스포츠</label>
+            <input type="checkbox" id="sports" name="hobby">
+            <label for="sports">IT</label>
+            <input type="checkbox" id="it" name="hobby">
+            <small>에러 메세지</small>
+        </div>
+
+        <div class="form-control">
+            <label for="interest">취미</label>
+            <select name="interest" id="interest" multiple>
+            <option value="choose" selected>==취미를 선택해주세요==</option>
+            <option value="reading">독서</option>
+            <option value="listening">음악감상</option>
+            <option value="listening">영화보기</option>
+            <option value="listening">운동</option>
+            <option value="listening">게임</option>
+            </select>
+            <small>에러 메세지</small>
+        </div>
+        <div class="form-control">
+            <label for="zip">우편번호</label>
+            <input type="text" id="zip">
+            <small>에러 메세지</small>
+        </div>
+        <div class="form-control">
+            <label for="region">지역</label>
+            <select name="region" id="region">
+                <option value="서울">서울</option>
+                <option value="서울">경기도</option>
+                <option value="서울">경상북도</option>
+                <option value="서울">경상남도</option>
+                <option value="서울">전라북도</option>
+                <option value="서울">전라남도</option>
+            </select>
+        </div>
+        <div class="form-control">
+            <label for="detailAddress">상세주소</label>
+            <input type="text" id="detailAddress">
+            <small>에러 메세지</small>
+        </div>
+        <div class="form-control">
+            <label for="phoneNumber">전화번호</label>
+            <input type="text" id="phoneNumber" placeholder="전화번호를 입력해주세요">
+            <small>에러 메세지</small>
+        </div>
+        <div class="form-control">
+            <label for="selfIntroduction">자기소개</label>
+            <textarea id="selfIntroduction" placeholder="자신을 소개해주세요." rows=5 cols="40" ></textarea>
+            <div class="selfIntroductionLengthWrap" id="selfIntroduction_textLength_wrap">
+                <p id="selfIntroduction-length">(0/100)</p>
+            </div>
+            <small>에러 메세지</small>
+        </div>
+        <div class="form-control">
+            <label for="colorId">아이디 색상</label>
+            <input type="color" id="colorId">
+            <small>에러 메세지</small>
+        </div>
+        <div class="form-control">
+            <label for="dateBirth">생년월일</label>
+            <input type="date" id="dateBirth">
+            <small>에러 메세지</small>
+        </div>
+        <div class="form-control">
+            <label for="age">나이</label>
+            <input type="number" id="age" placeholder="나이">
+            <small>에러 메세지</small>
+        </div>
+        <div class="form-control">
+            <label for="profilePicture">프로필 사진</label>
+            <input type="file" id="profilePicture" accept="image/*">
+            <div class = "preview">
+            </div>
+            <small>에러 메세지</small>
+        </div>
+
+
+        <div class="form-control">
+            <span>개인정보 동의 약관</span><span id="moreDetails">(더보기)</span>
+            <div class="personalInfo" id="personalInfo">제1조(목적) 이 법은 개인정보의 처리 및 보호에 관한 사항을 정함으로써 개인의 자유와 권리를 보호하고, 나아가 개인의 존엄과 가치를 구현함을 목적으로 한다.
+                제2조(정의) 이 법에서 사용하는 용어의 뜻은 다음과 같다. <개정 2014. 3. 24., 2020. 2. 4.>
+
+                    1. “개인정보”란 살아 있는 개인에 관한 정보로서 다음 각 목의 어느 하나에 해당하는 정보를 말한다.
+
+                    가. 성명, 주민등록번호 및 영상 등을 통하여 개인을 알아볼 수 있는 정보
+
+                    나. 해당 정보만으로는 특정 개인을 알아볼 수 없더라도 다른 정보와 쉽게 결합하여 알아볼 수 있는 정보. 이 경우 쉽게 결합할 수 있는지 여부는 다른 정보의 입수 가능성 등 개인을 알아보는 데 소요되는 시간, 비용, 기술 등을 합리적으로 고려하여야 한다.
+
+                    다. 가목 또는 나목을 제1호의2에 따라 가명처리함으로써 원래의 상태로 복원하기 위한 추가 정보의 사용ㆍ결합 없이는 특정 개인을 알아볼 수 없는 정보(이하 “가명정보”라 한다)
+
+                    1의2. “가명처리”란 개인정보의 일부를 삭제하거나 일부 또는 전부를 대체하는 등의 방법으로 추가 정보가 없이는 특정 개인을 알아볼 수 없도록 처리하는 것을 말한다.
+
+                    2. “처리”란 개인정보의 수집, 생성, 연계, 연동, 기록, 저장, 보유, 가공, 편집, 검색, 출력, 정정(訂正), 복구, 이용, 제공, 공개, 파기(破棄), 그 밖에 이와 유사한 행위를 말한다.
+
+                    3. “정보주체”란 처리되는 정보에 의하여 알아볼 수 있는 사람으로서 그 정보의 주체가 되는 사람을 말한다.
+
+                    4. “개인정보파일”이란 개인정보를 쉽게 검색할 수 있도록 일정한 규칙에 따라 체계적으로 배열하거나 구성한 개인정보의 집합물(集合物)을 말한다.
+
+                    5. “개인정보처리자”란 업무를 목적으로 개인정보파일을 운용하기 위하여 스스로 또는 다른 사람을 통하여 개인정보를 처리하는 공공기관, 법인, 단체 및 개인 등을 말한다.
+
+                    6. “공공기관”이란 다음 각 목의 기관을 말한다.
+
+                    가. 국회, 법원, 헌법재판소, 중앙선거관리위원회의 행정사무를 처리하는 기관, 중앙행정기관(대통령 소속 기관과 국무총리 소속 기관을 포함한다) 및 그 소속 기관, 지방자치단체
+
+                    나. 그 밖의 국가기관 및 공공단체 중 대통령령으로 정하는 기관
+
+                    7. “영상정보처리기기”란 일정한 공간에 지속적으로 설치되어 사람 또는 사물의 영상 등을 촬영하거나 이를 유ㆍ무선망을 통하여 전송하는 장치로서 대통령령으로 정하는 장치를 말한다.
+
+                    8. “과학적 연구”란 기술의 개발과 실증, 기초연구, 응용연구 및 민간 투자 연구 등 과학적 방법을 적용하는 연구를 말한다.
+            </div>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+
+<script src="./app.js"></script>
+</body>
+</html>

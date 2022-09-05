@@ -15,19 +15,10 @@ const phoneNumber = document.getElementById("phoneNumber");
 const selfIntroduction = document.getElementById("selfIntroduction");
 const selfIntroductionTextLengthWrap = document.getElementById("selfIntroduction_textLength_wrap");
 const dateBirth = document.getElementById("dateBirth");
-
+const age = document.getElementById("age");
 const SELFINTRODUCTION_MIN_VALUE = 10;
 const SELFINTRODUCTION_MAX_VALUE = 100;
 
-
-
-function checkEnteredDateBirth(input) {
-    if(input.value === ''){
-        showError(input, "생년월일을 입력 또는 선택해주세요");
-    }else{
-        showSuccess(input);
-    }
-}
 
 phoneNumber.onkeyup = autoHyphenPhoneNumber;
 selfIntroduction.onkeyup = getCurrentTextLength;
@@ -53,6 +44,7 @@ function formEvent(ev) {
         checkPhoneNumber(phoneNumber);
         getSelfIntroduction(selfIntroduction);
         checkEnteredDateBirth(dateBirth);
+        checkNumber(age);
     }
 }
 
@@ -298,7 +290,13 @@ function getSelfIntroduction(input) {
     }
 }
 
-
+function checkEnteredDateBirth(input) {
+    if (input.value === '') {
+        showError(input, "생년월일을 입력 또는 선택해주세요");
+    } else {
+        showSuccess(input);
+    }
+}
 
 function getCurrentTextLength() {
     let currentTextLength;
@@ -316,5 +314,27 @@ function getCurrentTextLength() {
         } else {
             showSuccessTextColor(this);
         }
+    }
+}
+
+
+function checkNumber(input) {
+    const MIN_AGE = 0;
+    const MAX_AGE = 99;
+    const enteredNumberString = input.value;
+    const enteredNumberInt = parseInt(input.value);
+    if (enteredNumberInt > MAX_AGE) {
+        showError(input, "나이는 1~99까지 입력 할 수 있습니다.");
+        return;
+    } else if (enteredNumberString === '') {
+        showError(input, "나이를 입력해주세요!");
+        return;
+    } else {
+        showSuccess(input);
+    }
+    if(enteredNumberInt <= MIN_AGE){
+        showError(input, "나이는 1~99까지 입력 할 수 있습니다.");
+    }else{
+        showSuccess(input);
     }
 }

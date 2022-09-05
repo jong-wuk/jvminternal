@@ -155,10 +155,14 @@ div {
 
 .personalInfo {
     display: none;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    width: 300px;
+    height: 300px;
 }
 
 #moreDetails {
     cursor: pointer;
     color: #2962ff;
-    scroll-behavior: smooth;
+
 }

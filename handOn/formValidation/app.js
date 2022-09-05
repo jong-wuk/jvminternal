@@ -10,12 +10,13 @@ const arrHobbyCheckbox = document.getElementsByName("hobby");
 const interest = document.getElementById("interest");
 const arrInterestSelectBoxOptions = document.getElementById("interest").options;
 const zipCode = document.getElementById("zip");
-
+const detailAddress = document.getElementById("detailAddress");
+const phoneNumber = document.getElementById("phoneNumber");
 form.addEventListener('submit', formEvent);
 
 function formEvent(ev) {
     ev.preventDefault();
-    if (checkRequired([username, email, password, passwordCheck, birth,birthDay])) {
+    if (checkRequired([username, email, password, passwordCheck, birth, birthDay])) {
         const selectedValueArray = getSelectedValueArray(arrInterestSelectBoxOptions);
         checkLength(username, 3);
         checkLength(password, 8);
@@ -23,14 +24,15 @@ function formEvent(ev) {
         checkPasswordMatch(password, passwordCheck);
         checkEmail(email);
         checkBirth(birth);
-        checkBirthDay(birthDay,0,31);
+        checkBirthDay(birthDay, 0, 31);
         checkGender(inputRadioButtons);
         checkHobbyChecking(arrHobbyCheckbox);
         checkInterestSelected(selectedValueArray);
         checkZipcode(zipCode);
+        checkDetailAddress(detailAddress);
+        checkPhoneNumber(phoneNumber);
     }
 }
-
 
 
 function getFieldName(input) {
@@ -111,81 +113,107 @@ function checkBirth(input) {
 
 }
 
-function checkBirthDay(input,minBirthDay,maxBirthDay){
+function checkBirthDay(input, minBirthDay, maxBirthDay) {
     const birthDayValue = input.value;
-    if(birthDayValue>minBirthDay && birthDayValue<=maxBirthDay){
-        console.log("success");
+    if (birthDayValue > minBirthDay && birthDayValue <= maxBirthDay) {
+        console.debug("success");
         showSuccess(input);
-    }else{
-    showError(input,`${getFieldName(input)}은 1과 31사이의 숫자 입니다.`);
+    } else {
+        showError(input, `${getFieldName(input)}은 1과 31사이의 숫자 입니다.`);
     }
 }
 
-function checkGender(inputs){
+function checkGender(inputs) {
     let selected = false;
-    inputs.forEach((input)=>{
-        if(input.checked){
+    inputs.forEach((input) => {
+        if (input.checked) {
             showSuccess(input);
             selected = true;
         }
     })
-    if(!selected){
-        showError(inputs[0],"성별을 선택해 주세요!")
+    if (!selected) {
+        showError(inputs[0], "성별을 선택해 주세요!")
     }
 }
-function checkHobbyChecking(inputs){
+
+function checkHobbyChecking(inputs) {
     let checked = false;
-    inputs.forEach((input)=>{
-        if(input.checked){
+    inputs.forEach((input) => {
+        if (input.checked) {
             showSuccess(input);
             checked = true;
         }
     })
-    if (!checked){
-        showError(inputs[0],"관심사를 최소 1개 이상 선택해 주세요");
+    if (!checked) {
+        showError(inputs[0], "관심사를 최소 1개 이상 선택해 주세요");
     }
 }
 
-function getSelectedValueArray(inputs){
+function getSelectedValueArray(inputs) {
     var result = [];
     var options = inputs;
     var opt;
-    for(var i=0; i<inputs.length;i++){
+    for (var i = 0; i < inputs.length; i++) {
         opt = options[i];
 
-        if(opt.selected){
+        if (opt.selected) {
             result.push(opt.value || opt.text);
         }
     }
-    console.log(result);
+    console.debug(result);
     return result;
 }
 
-function checkInterestSelected(result){
+function checkInterestSelected(result) {
     let flag = false;
-    result.forEach(text=>{
-        if(text ==="choose"){
+    result.forEach(text => {
+        if (text === "choose") {
             showError(interest, "취미를 최소 1개 이상 선택해 주세요");
             flag = true;
         }
     })
-    if(!flag){
+    if (!flag) {
         showSuccess(interest);
     }
 }
 
-function checkZipcode(input){
+function checkZipcode(input) {
     const zipCodeRegex = /^\d{5}/
     const zipCodeValue = input.value;
-    console.log(zipCodeValue.length);
-    if(zipCodeValue.length > 5){
-        showError(input,"우편번호는 최대 5글자 까지 입니다.");
-    }else{
-        if(zipCodeRegex.test(zipCodeValue)){
+    if (zipCodeValue.length > 5) {
+        showError(input, "우편번호는 최대 5글자 까지 입니다.");
+    } else {
+        if (zipCodeRegex.test(zipCodeValue)) {
             showSuccess(input);
-        }else{
+        } else {
             showError(input, "숫자만 입력해 주세요!");
         }
     }
 }
 
+function checkDetailAddress(input) {
+    const detailAddressValue = input.value;
+    if (detailAddressValue === '') {
+        showError(input, "주소를 입력해주세요.");
+    } else {
+        showSuccess(input);
+    }
+}
+
+
+function checkPhoneNumber(input) {
+    let phoneNumberValue = input.value;
+    const convertedPhoneNumberValue = convertPhoneNumber(phoneNumberValue);
+    const checkedNumberWithRegex = /^[0-9]{3}[-]+[0-9]{4}[-]+[0-9]{4}$/.test(convertedPhoneNumberValue);
+    if (checkedNumberWithRegex && phoneNumberValue.length < 12) {
+        showSuccess(input);
+        input.value = phoneNumberValue.replaceAll(phoneNumberValue,convertedPhoneNumberValue);
+        console.log(phoneNumberValue);
+    } else {
+        showError(input, "핸드폰 번호를 형식에 맞게 입력해주세요(010포함 11자리 숫자입니다.)");
+    }
+}
+
+function convertPhoneNumber(numberBeConverted) {
+    return numberBeConverted.substring(0, 3) + "-" + numberBeConverted.substring(3, 7) + "-" + numberBeConverted.substring(7, 11);
+}

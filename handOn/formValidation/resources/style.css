@@ -91,6 +91,23 @@ div{
     border-color: var(--error-color);
 }
 
+.form-control.success textarea{
+    border-color: var(--succes-color);
+}
+
+.form-control.error textarea{
+    border-color: var(--error-color);
+}
+
+
+
+.selfIntroduction-textLength.error p{
+    color: var(--error-color);
+}
+.selfIntroduction-textLength.success p {
+    color: var(--succes-color);
+
+}
 /*.form-control.error input[type='radio']:checked{
     appearance: none;
     width:16px;

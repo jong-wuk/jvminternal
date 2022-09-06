@@ -85,12 +85,14 @@
         <div class="form-control">
             <label for="interest">취미</label>
             <select name="interest" id="interest" multiple>
+
                 <option value="choose" selected>==취미를 선택해주세요==</option>
                 <option value="reading">독서</option>
                 <option value="listening">음악감상</option>
                 <option value="listening">영화보기</option>
                 <option value="listening">운동</option>
                 <option value="listening">게임</option>
+
             </select>
             <small>에러 메세지</small>
         </div>
@@ -122,7 +124,9 @@
         </div>
         <div class="form-control">
             <label for="selfIntroduction">자기소개</label>
+
             <textarea id="selfIntroduction" placeholder="자신을 소개해주세요." rows=5 cols="40"></textarea>
+
             <div class="selfIntroductionLengthWrap" id="selfIntroduction_textLength_wrap">
                 <p id="selfIntroduction-length">(0/100)</p>
             </div>
@@ -146,7 +150,9 @@
         <div class="form-control">
             <label for="profilePicture">프로필 사진</label>
             <input type="file" id="profilePicture" accept="image/*">
+
             <div class="preview">
+
             </div>
             <small>에러 메세지</small>
         </div>
@@ -154,24 +160,30 @@
 
         <div class="form-control">
             <span>개인정보 동의 약관</span><span id="moreDetails">(더보기)</span>
+
             <div class="personalInfo" id="personalInfo">제1조(목적) 이 법은 개인정보의 처리 및 보호에 관한 사항을 정함으로써 개인의 자유와 권리를 보호하고, 나아가
                 개인의 존엄과 가치를 구현함을 목적으로 한다.
                 제2조(정의) 이 법에서 사용하는 용어의 뜻은 다음과 같다.
                 <개정 2014. 3. 24., 2020. 2. 4.>
 
+
                     1. “개인정보”란 살아 있는 개인에 관한 정보로서 다음 각 목의 어느 하나에 해당하는 정보를 말한다.
 
                     가. 성명, 주민등록번호 및 영상 등을 통하여 개인을 알아볼 수 있는 정보
 
+
                     나. 해당 정보만으로는 특정 개인을 알아볼 수 없더라도 다른 정보와 쉽게 결합하여 알아볼 수 있는 정보. 이 경우 쉽게 결합할 수 있는지 여부는 다른 정보의 입수 가능성 등 개인을
                     알아보는 데 소요되는 시간, 비용, 기술 등을 합리적으로 고려하여야 한다.
+
 
                     다. 가목 또는 나목을 제1호의2에 따라 가명처리함으로써 원래의 상태로 복원하기 위한 추가 정보의 사용ㆍ결합 없이는 특정 개인을 알아볼 수 없는 정보(이하 “가명정보”라 한다)
 
                     1의2. “가명처리”란 개인정보의 일부를 삭제하거나 일부 또는 전부를 대체하는 등의 방법으로 추가 정보가 없이는 특정 개인을 알아볼 수 없도록 처리하는 것을 말한다.
 
+
                     2. “처리”란 개인정보의 수집, 생성, 연계, 연동, 기록, 저장, 보유, 가공, 편집, 검색, 출력, 정정(訂正), 복구, 이용, 제공, 공개, 파기(破棄), 그 밖에 이와
                     유사한 행위를 말한다.
+
 
                     3. “정보주체”란 처리되는 정보에 의하여 알아볼 수 있는 사람으로서 그 정보의 주체가 되는 사람을 말한다.
 
@@ -189,6 +201,7 @@
 
                     8. “과학적 연구”란 기술의 개발과 실증, 기초연구, 응용연구 및 민간 투자 연구 등 과학적 방법을 적용하는 연구를 말한다.
             </div>
+
             <div id="radio-button-wrapper" class="radio-button-wrapper form-control hidden">
                 <label for="radio-checkAgree">동의</label>
                 <input type="radio" id="radio-checkAgree" value="checkAgree" name="check" class="agree-radio">
@@ -201,6 +214,7 @@
         <button type="submit">전송</button>
         <button type="reset">초기화</button>
         </div>
+
     </form>
 
 </div>

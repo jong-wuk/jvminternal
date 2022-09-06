@@ -1,0 +1,6 @@
+ ul > li img{
+    max-width: 100%;
+     height: auto;
+    object-fit: contain;
+     width: 246px;
+ }

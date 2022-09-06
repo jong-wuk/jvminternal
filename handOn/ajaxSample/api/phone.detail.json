@@ -1,0 +1,420 @@
+{
+    "GalaxyS20": [
+        {
+            "model": "GalaxyS20",
+            "color": "white",
+            "name": "Galaxy S20 5G",
+            "editArea": {
+                "width": 710,
+                "height": 1540,
+                "ratio": 0.461038961038961
+            },
+            "coverImg": "models/s20/colors/s20_white.png",
+            "maskImg": "models/s20/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyS20",
+            "color": "black",
+            "name": "Galaxy S20 5G",
+            "editArea": {
+                "width": 710,
+                "height": 1540,
+                "ratio": 0.461038961038961
+            },
+            "coverImg": "models/s20/colors/s20_black.png",
+            "maskImg": "models/s20/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyS20",
+            "color": "clear",
+            "name": "Galaxy S20 5G",
+            "editArea": {
+                "width": 710,
+                "height": 1540,
+                "ratio": 0.461038961038961
+            },
+            "coverImg": "models/s20/colors/s20_clear.png",
+            "maskImg": "models/s20/mask/overlay_mask.png"
+        }
+    ],
+    "GalaxyS20+": [
+        {
+            "model": "GalaxyS20+",
+            "color": "white",
+            "name": "Galaxy S20+ 5G",
+            "editArea": {
+                "width": 760,
+                "height": 1640,
+                "ratio": 0.4634146341463415
+            },
+            "coverImg": "models/s20plus/colors/s20plus_white.png",
+            "maskImg": "models/s20plus/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyS20+",
+            "color": "black",
+            "name": "Galaxy S20+ 5G",
+            "editArea": {
+                "width": 760,
+                "height": 1640,
+                "ratio": 0.4634146341463415
+            },
+            "coverImg": "models/s20plus/colors/s20plus_black.png",
+            "maskImg": "models/s20plus/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyS20+",
+            "color": "clear",
+            "name": "Galaxy S20+ 5G",
+            "editArea": {
+                "width": 760,
+                "height": 1640,
+                "ratio": 0.4634146341463415
+            },
+            "coverImg": "models/s20plus/colors/s20plus_clear.png",
+            "maskImg": "models/s20plus/mask/overlay_mask.png"
+        }
+    ],
+    "GalaxyS20Ultra": [
+        {
+            "model": "GalaxyS20Ultra",
+            "color": "white",
+            "name": "Galaxy S20 Ultra 5G",
+            "editArea": {
+                "width": 780,
+                "height": 1690,
+                "ratio": 0.4615384615384615
+            },
+            "coverImg": "models/s20ultra/colors/s20ultra_white.png",
+            "maskImg": "models/s20ultra/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyS20Ultra",
+            "color": "black",
+            "name": "Galaxy S20 Ultra 5G",
+            "editArea": {
+                "width": 780,
+                "height": 1690,
+                "ratio": 0.4615384615384615
+            },
+            "coverImg": "models/s20ultra/colors/s20ultra_black.png",
+            "maskImg": "models/s20ultra/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyS20Ultra",
+            "color": "clear",
+            "name": "Galaxy S20 Ultra 5G",
+            "editArea": {
+                "width": 780,
+                "height": 1690,
+                "ratio": 0.4615384615384615
+            },
+            "coverImg": "models/s20ultra/colors/s20ultra_clear.png",
+            "maskImg": "models/s20ultra/mask/overlay_mask.png"
+        }
+    ],
+    "GalaxyZFlip": [
+        {
+            "model": "GalaxyZFlip",
+            "color": "white",
+            "name": "Galaxy Z Flip",
+            "editArea": {
+                "width": 760,
+                "height": 1690,
+                "ratio": 0.4497041420118343
+            },
+            "coverImg": "models/zflip/colors/zflip_white.png",
+            "maskImg": "models/zflip/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyZFlip",
+            "color": "black",
+            "name": "Galaxy Z Flip",
+            "editArea": {
+                "width": 760,
+                "height": 1690,
+                "ratio": 0.4497041420118343
+            },
+            "coverImg": "models/zflip/colors/zflip_black.png",
+            "maskImg": "models/zflip/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyZFlip",
+            "color": "clear",
+            "name": "Galaxy Z Flip",
+            "editArea": {
+                "width": 760,
+                "height": 1690,
+                "ratio": 0.4497041420118343
+            },
+            "coverImg": "models/zflip/colors/zflip_clear.png",
+            "maskImg": "models/zflip/mask/overlay_mask.png"
+        }
+    ],
+    "GalaxyNote20Ultra": [
+        {
+            "model": "GalaxyNote20Ultra",
+            "color": "white",
+            "name": "Galaxy Note20 Ultra 5G",
+            "editArea": {
+                "width": 760,
+                "height": 1630,
+                "ratio": 0.4662576687116564
+            },
+            "coverImg": "models/note20ultra/colors/note20ultra_white.png",
+            "maskImg": "models/note20ultra/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyNote20Ultra",
+            "color": "black",
+            "name": "Galaxy Note20 Ultra 5G",
+            "editArea": {
+                "width": 760,
+                "height": 1630,
+                "ratio": 0.4662576687116564
+            },
+            "coverImg": "models/note20ultra/colors/note20ultra_black.png",
+            "maskImg": "models/note20ultra/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyNote20Ultra",
+            "color": "clear",
+            "name": "Galaxy Note20 Ultra 5G",
+            "editArea": {
+                "width": 760,
+                "height": 1630,
+                "ratio": 0.4662576687116564
+            },
+            "coverImg": "models/note20ultra/colors/note20ultra_clear.png",
+            "maskImg": "models/note20ultra/mask/overlay_mask2.png"
+        }
+    ],
+    "GalaxyS21": [
+        {
+            "model": "GalaxyS21",
+            "color": "white",
+            "name": "Galaxy S21 5G",
+            "editArea": {
+                "width": 740,
+                "height": 1540,
+                "ratio": 0.480519480519481
+            },
+            "coverImg": "models/s21/colors/s21_white.png",
+            "maskImg": "models/s21/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyS21",
+            "color": "black",
+            "name": "Galaxy S21 5G",
+            "editArea": {
+                "width": 740,
+                "height": 1540,
+                "ratio": 0.480519480519481
+            },
+            "coverImg": "models/s21/colors/s21_black.png",
+            "maskImg": "models/s21/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyS21",
+            "color": "clear",
+            "name": "Galaxy S21 5G",
+            "editArea": {
+                "width": 740,
+                "height": 1540,
+                "ratio": 0.480519480519481
+            },
+            "coverImg": "models/s21/colors/s21_clear.png",
+            "maskImg": "models/s21/mask/overlay_mask2.png"
+        }
+    ],
+    "GalaxyS21+": [
+        {
+            "model": "GalaxyS21+",
+            "color": "white",
+            "name": "Galaxy S21+ 5G",
+            "editArea": {
+                "width": 790,
+                "height": 1640,
+                "ratio": 0.475609756097561
+            },
+            "coverImg": "models/s21plus/colors/s21plus_white.png",
+            "maskImg": "models/s21plus/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyS21+",
+            "color": "black",
+            "name": "Galaxy S21+ 5G",
+            "editArea": {
+                "width": 790,
+                "height": 1640,
+                "ratio": 0.475609756097561
+            },
+            "coverImg": "models/s21plus/colors/s21plus_black.png",
+            "maskImg": "models/s21plus/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyS21+",
+            "color": "clear",
+            "name": "Galaxy S21+ 5G",
+            "editArea": {
+                "width": 790,
+                "height": 1640,
+                "ratio": 0.475609756097561
+            },
+            "coverImg": "models/s21plus/colors/s21plus_clear.png",
+            "maskImg": "models/s21plus/mask/overlay_mask2.png"
+        }
+    ],
+    "GalaxyS21Ultra": [
+        {
+            "model": "GalaxyS21Ultra",
+            "color": "white",
+            "name": "Galaxy S21 Ultra 5G",
+            "editArea": {
+                "width": 790,
+                "height": 1690,
+                "ratio": 0.4615384615384615
+            },
+            "coverImg": "models/s21ultra/colors/s21ultra_white.png",
+            "maskImg": "models/s21ultra/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyS21Ultra",
+            "color": "black",
+            "name": "Galaxy S21 Ultra 5G",
+            "editArea": {
+                "width": 790,
+                "height": 1690,
+                "ratio": 0.4615384615384615
+            },
+            "coverImg": "models/s21ultra/colors/s21ultra_black.png",
+            "maskImg": "models/s21ultra/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyS21Ultra",
+            "color": "clear",
+            "name": "Galaxy S21 Ultra 5G",
+            "editArea": {
+                "width": 790,
+                "height": 1690,
+                "ratio": 0.4615384615384615
+            },
+            "coverImg": "models/s21ultra/colors/s21ultra_clear.png",
+            "maskImg": "models/s21ultra/mask/overlay_mask2.png"
+        }
+    ],
+    "GalaxyZFlip3": [
+        {
+            "model": "GalaxyZFlip3",
+            "color": "white",
+            "name": "Galaxy Z Flip3 5G",
+            "editArea": {
+                "width": 720,
+                "height": 1720,
+                "ratio": 0.4186046511627907
+            },
+            "coverImg": "models/zflip3/colors/zflip3_white.png",
+            "maskImg": "models/zflip3/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyZFlip3",
+            "color": "black",
+            "name": "Galaxy Z Flip3 5G",
+            "editArea": {
+                "width": 720,
+                "height": 1720,
+                "ratio": 0.4186046511627907
+            },
+            "coverImg": "models/zflip3/colors/zflip3_black.png",
+            "maskImg": "models/zflip3/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyZFlip3",
+            "color": "clear",
+            "name": "Galaxy Z Flip3 5G",
+            "editArea": {
+                "width": 720,
+                "height": 1720,
+                "ratio": 0.4186046511627907
+            },
+            "coverImg": "models/zflip3/colors/zflip3_clear.png",
+            "maskImg": "models/zflip3/mask/overlay_mask2.png"
+        }
+    ],
+    "GalaxyS22": [
+        {
+            "model": "GalaxyS22",
+            "color": "white",
+            "name": "Galaxy S22",
+            "editArea": {
+                "width": 710,
+                "height": 1470,
+                "ratio": 0.4829931972789116
+            },
+            "coverImg": "models/s22/colors/s22_white.png",
+            "maskImg": "models/s22/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyS22",
+            "color": "black",
+            "name": "Galaxy S22",
+            "editArea": {
+                "width": 710,
+                "height": 1470,
+                "ratio": 0.4829931972789116
+            },
+            "coverImg": "models/s22/colors/s22_black.png",
+            "maskImg": "models/s22/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyS22",
+            "color": "clear",
+            "name": "Galaxy S22",
+            "editArea": {
+                "width": 710,
+                "height": 1470,
+                "ratio": 0.4829931972789116
+            },
+            "coverImg": "models/s22/colors/s22_clear.png",
+            "maskImg": "models/s22/mask/overlay_mask2.png"
+        }
+    ],
+    "GalaxyS22Ultra": [
+        {
+            "model": "GalaxyS22Ultra",
+            "color": "white",
+            "name": "Galaxy S22 Ultra",
+            "editArea": {
+                "width": 710,
+                "height": 1482,
+                "ratio": 0.4790419161676647
+            },
+            "coverImg": "models/s22ultra/colors/s22ultra_white.png",
+            "maskImg": "models/s22ultra/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyS22Ultra",
+            "color": "black",
+            "name": "Galaxy S22 Ultra",
+            "editArea": {
+                "width": 710,
+                "height": 1482,
+                "ratio": 0.4790419161676647
+            },
+            "coverImg": "models/s22ultra/colors/s22ultra_black.png",
+            "maskImg": "models/s22ultra/mask/overlay_mask.png"
+        },
+        {
+            "model": "GalaxyS22Ultra",
+            "color": "clear",
+            "name": "Galaxy S22 Ultra",
+            "editArea": {
+                "width": 710,
+                "height": 1482,
+                "ratio": 0.4790419161676647
+            },
+            "coverImg": "models/s22ultra/colors/s22ultra_clear.png",
+            "maskImg": "models/s22ultra/mask/overlay_mask.png"
+        }
+    ]
+}

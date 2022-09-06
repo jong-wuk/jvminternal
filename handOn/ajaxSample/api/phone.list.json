@@ -1,0 +1,72 @@
+{
+    "GalaxyS22": {
+        "name": "Galaxy \nS22",
+        "productImg": "models/s22/main/model_main.jpg",
+        "omniAction": "galaxy-harajuku^my-galaxy:select-model:select:s22",
+        "alt": {},
+        "new": true
+    },
+    "GalaxyS22Ultra": {
+        "name": "Galaxy \nS22 Ultra",
+        "productImg": "models/s22ultra/main/model_main.jpg",
+        "omniAction": "galaxy-harajuku^my-galaxy:select-model:select:s22-ultra",
+        "alt": {},
+        "new": true
+    },
+    "GalaxyZFlip3": {
+        "name": "Galaxy \nZ Flip3 5G",
+        "productImg": "models/zflip3/main/model_main.jpg",
+        "omniAction": "galaxy-harajuku^my-galaxy:select-model:select:z-flip3",
+        "alt": {},
+        "new": false
+    },    
+    "GalaxyS21": {
+        "name": "Galaxy \nS21 5G",
+        "productImg": "models/s21/main/model_main.jpg",
+        "omniAction": "galaxy-harajuku^my-galaxy:select-model:select:s21",
+        "alt": {},
+        "new": false
+    },
+    "GalaxyS21+": {
+        "name": "Galaxy \nS21+ 5G",
+        "productImg": "models/s21plus/main/model_main.jpg",
+        "omniAction": "galaxy-harajuku^my-galaxy:select-model:select:s21+",
+        "alt": {},
+        "new": false
+    },
+    "GalaxyS21Ultra": {
+        "name": "Galaxy \nS21 Ultra 5G",
+        "productImg": "models/s21ultra/main/model_main.jpg",
+        "omniAction": "galaxy-harajuku^my-galaxy:select-model:select:s21-ultra",
+        "alt": {},
+        "new": false
+    },
+    "GalaxyNote20Ultra": {
+        "name": "Galaxy \nNote20 Ultra 5G",
+        "productImg": "models/note20ultra/main/model_main.png",
+        "omniAction": "galaxy-harajuku^my-galaxy:select-model:select:note20-ultra",
+        "alt": {},
+        "new": false
+    },
+    "GalaxyS20": {
+        "name": "Galaxy \nS20 5G",
+        "productImg": "models/s20/main/model_main.png",
+        "omniAction": "galaxy-harajuku^my-galaxy:select-model:select:s20",
+        "alt": {},
+        "new": false
+    },
+    "GalaxyS20+": {
+        "name": "Galaxy \nS20+ 5G",
+        "productImg": "models/s20plus/main/model_main.png",
+        "omniAction": "galaxy-harajuku^my-galaxy:select-model:select:s20+",
+        "alt": {},
+        "new": false
+    },
+    "GalaxyS20Ultra": {
+        "name": "Galaxy \nS20 Ultra 5G",
+        "productImg": "models/s20ultra/main/model_main.png",
+        "omniAction": "galaxy-harajuku^my-galaxy:select-model:select:s20-ultra",
+        "alt": {},
+        "new": false
+    }
+}

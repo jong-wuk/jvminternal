@@ -29,8 +29,19 @@ personalInfo.addEventListener('scroll', controlButton)
 moreDetails.addEventListener("click", openCloseContent);
 profilePicture.addEventListener('change', updateImageDisplay);
 
+
+
+function openCloseContent() {
+    if(personalInfo.style.display ==='block'){
+        personalInfo.style.display = 'none';
+    }else{
+        personalInfo.style.display = 'block';
+    }
+}
+
 phoneNumber.onkeyup = autoHyphenPhoneNumber;
 selfIntroduction.onkeyup = getCurrentTextLength;
+
 
 
 form.addEventListener('submit', formEvent);
@@ -46,11 +57,27 @@ function formEvent(event) {
         const selectedValueArray = getSelectedValueArray(arrInterestSelectBoxOptions);
         checkLength(username, MIN_NAME_LENGTH);
         checkLength(password, MAX_PASSWORD_LENGTH);
+
+profilePicture.addEventListener('change', updateImageDisplay);
+form.addEventListener('submit', formEvent);
+
+function checkProfilePicture(input) {
+    let uploadImageFileCount = input.files.length;
+    console.log(uploadImageFileCount);
+    if (uploadImageFileCount === 0) {
+        showError(input, "프로필 사진을 업로드해주세요.");
+    } else {
+        showSuccess(input);
+    }
+}
+
         checkPassword(password);
         checkPasswordMatch(password, passwordCheck);
         checkEmail(email);
         checkBirth(birth);
+
         checkBirthDay(birthDay, MIN_BIRTHDAY, MAX_BIRTHDAY);
+
         checkGender(inputRadioButtons);
         checkHobbyChecking(arrHobbyCheckbox);
         checkInterestSelected(selectedValueArray);
@@ -61,7 +88,9 @@ function formEvent(event) {
         checkEnteredDateBirth(dateBirth);
         checkNumber(age);
         checkProfilePicture(profilePicture);
+
         checkTerms(agreeRadioButtons);
+
     }
 }
 
@@ -116,6 +145,7 @@ function checkEmail(input) {
     }
 }
 
+
 function isFieldNameExist(input, required) {
     if (input.value.trim() === '') {
         showError(input, `${getFieldName(input)} 은 필수 입력값 입니다.`);
@@ -132,6 +162,7 @@ function checkRequired(inputArr) {
         required = isFieldNameExist(input, required);
     });
     return required;
+
 }
 
 function checkLength(input, min) {
@@ -195,6 +226,7 @@ function checkGender(inputs) {
     }
 }
 
+
 function checkTerms(inputs) {
     inputs.forEach((input) => {
         if (input.checked) {
@@ -211,6 +243,7 @@ function checkTerms(inputs) {
 
     });
 }
+
 
 function checkHobbyChecking(inputs) {
     let checked = false;
@@ -229,8 +262,10 @@ function getSelectedValueArray(inputs) {
     let result = [];
     let options = inputs;
     let opt;
+
     for (let option_i = 0; option_i < inputs.length; option_i++) {
         opt = options[option_i];
+
 
         if (opt.selected) {
             result.push(opt.value || opt.text);
@@ -241,6 +276,7 @@ function getSelectedValueArray(inputs) {
 }
 
 function checkInterestSelected(result) {
+
     let selected = false;
     result.forEach(text => {
         if (text === "choose") {
@@ -249,6 +285,7 @@ function checkInterestSelected(result) {
         }
     })
     if (!selected) {
+
         showSuccess(interest);
     }
 }
@@ -392,6 +429,7 @@ function updateImageDisplay() {
 
 }
 
+
 function controlButton() {
     const scrollTop = personalInfo.scrollTop;
     radioButtonWrapper.classList.add("hidden");
@@ -421,3 +459,4 @@ function checkProfilePicture(input) {
         showSuccess(input);
     }
 }
+

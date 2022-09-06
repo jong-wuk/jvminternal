@@ -36,17 +36,21 @@ selfIntroduction.onkeyup = getCurrentTextLength;
 form.addEventListener('submit', formEvent);
 
 
-function formEvent(ev) {
-    ev.preventDefault();
+function formEvent(event) {
+    event.preventDefault();
+    const MIN_NAME_LENGTH = 3;
+    const MAX_PASSWORD_LENGTH = 8;
+    const MIN_BIRTHDAY = 0;
+    const MAX_BIRTHDAY = 31;
     if (checkRequired([username, email, password, passwordCheck, birth, birthDay])) {
         const selectedValueArray = getSelectedValueArray(arrInterestSelectBoxOptions);
-        checkLength(username, 3);
-        checkLength(password, 8);
+        checkLength(username, MIN_NAME_LENGTH);
+        checkLength(password, MAX_PASSWORD_LENGTH);
         checkPassword(password);
         checkPasswordMatch(password, passwordCheck);
         checkEmail(email);
         checkBirth(birth);
-        checkBirthDay(birthDay, 0, 31);
+        checkBirthDay(birthDay, MIN_BIRTHDAY, MAX_BIRTHDAY);
         checkGender(inputRadioButtons);
         checkHobbyChecking(arrHobbyCheckbox);
         checkInterestSelected(selectedValueArray);
@@ -112,17 +116,22 @@ function checkEmail(input) {
     }
 }
 
+function isFieldNameExist(input, required) {
+    if (input.value.trim() === '') {
+        showError(input, `${getFieldName(input)} 은 필수 입력값 입니다.`);
+        required = true;
+    } else {
+        showSuccess(input);
+    }
+    return required;
+}
+
 function checkRequired(inputArr) {
-    let isRequired = false;
+    let required = false;
     inputArr.forEach(input => {
-        if (input.value.trim() === '') {
-            showError(input, `${getFieldName(input)} 은 필수 입력값 입니다.`);
-            isRequired = true;
-        } else {
-            showSuccess(input);
-        }
+        required = isFieldNameExist(input, required);
     });
-    return isRequired;
+    return required;
 }
 
 function checkLength(input, min) {
@@ -185,6 +194,7 @@ function checkGender(inputs) {
         showError(inputs[0], "성별을 선택해 주세요!")
     }
 }
+
 function checkTerms(inputs) {
     inputs.forEach((input) => {
         if (input.checked) {
@@ -219,8 +229,8 @@ function getSelectedValueArray(inputs) {
     let result = [];
     let options = inputs;
     let opt;
-    for (let i = 0; i < inputs.length; i++) {
-        opt = options[i];
+    for (let option_i = 0; option_i < inputs.length; option_i++) {
+        opt = options[option_i];
 
         if (opt.selected) {
             result.push(opt.value || opt.text);
@@ -231,14 +241,14 @@ function getSelectedValueArray(inputs) {
 }
 
 function checkInterestSelected(result) {
-    let flag = false;
+    let selected = false;
     result.forEach(text => {
         if (text === "choose") {
             showError(interest, "취미를 최소 1개 이상 선택해 주세요");
-            flag = true;
+            selected = true;
         }
     })
-    if (!flag) {
+    if (!selected) {
         showSuccess(interest);
     }
 }

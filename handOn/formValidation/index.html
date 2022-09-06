@@ -191,12 +191,16 @@
             </div>
             <div id="radio-button-wrapper" class="radio-button-wrapper form-control hidden">
                 <label for="radio-checkAgree">동의</label>
-                <input type="radio" id="radio-checkAgree" value="checkAgree" name="check">
+                <input type="radio" id="radio-checkAgree" value="checkAgree" name="check" class="agree-radio">
                 <label for="radio-checkDisagree">미동의</label>
-                <input type="radio" id="radio-checkDisagree" value="checkDisagree" name="check">
+                <input type="radio" id="radio-checkDisagree" value="checkDisagree" name="check" class="agree-radio">
+                <small>에러 메세지</small>
             </div>
         </div>
-        <button type="submit">Submit</button>
+        <div class="form-control">
+        <button type="submit">전송</button>
+        <button type="reset">초기화</button>
+        </div>
     </form>
 
 </div>

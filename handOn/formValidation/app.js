@@ -19,8 +19,17 @@ const age = document.getElementById("age");
 const profilePicture = document.getElementById("profilePicture");
 const moreDetails = document.getElementById("moreDetails");
 const personalInfo = document.getElementById("personalInfo");
+const agreeRadioButtons = document.querySelectorAll(".agree-radio");
+const radioButtonWrapper = document.getElementById("radio-button-wrapper");
 const SELFINTRODUCTION_MIN_VALUE = 10;
 const SELFINTRODUCTION_MAX_VALUE = 100;
+
+
+personalInfo.addEventListener('scroll', controlButton)
+moreDetails.addEventListener("click", openCloseContent);
+profilePicture.addEventListener('change', updateImageDisplay);
+
+
 
 function openCloseContent() {
     if(personalInfo.style.display ==='block'){
@@ -30,10 +39,24 @@ function openCloseContent() {
     }
 }
 
-moreDetails.addEventListener("click",openCloseContent);
 phoneNumber.onkeyup = autoHyphenPhoneNumber;
 selfIntroduction.onkeyup = getCurrentTextLength;
 
+
+
+form.addEventListener('submit', formEvent);
+
+
+function formEvent(event) {
+    event.preventDefault();
+    const MIN_NAME_LENGTH = 3;
+    const MAX_PASSWORD_LENGTH = 8;
+    const MIN_BIRTHDAY = 0;
+    const MAX_BIRTHDAY = 31;
+    if (checkRequired([username, email, password, passwordCheck, birth, birthDay])) {
+        const selectedValueArray = getSelectedValueArray(arrInterestSelectBoxOptions);
+        checkLength(username, MIN_NAME_LENGTH);
+        checkLength(password, MAX_PASSWORD_LENGTH);
 
 profilePicture.addEventListener('change', updateImageDisplay);
 form.addEventListener('submit', formEvent);
@@ -48,17 +71,13 @@ function checkProfilePicture(input) {
     }
 }
 
-function formEvent(ev) {
-    ev.preventDefault();
-    if (checkRequired([username, email, password, passwordCheck, birth, birthDay])) {
-        const selectedValueArray = getSelectedValueArray(arrInterestSelectBoxOptions);
-        checkLength(username, 3);
-        checkLength(password, 8);
         checkPassword(password);
         checkPasswordMatch(password, passwordCheck);
         checkEmail(email);
         checkBirth(birth);
-        checkBirthDay(birthDay, 0, 31);
+
+        checkBirthDay(birthDay, MIN_BIRTHDAY, MAX_BIRTHDAY);
+
         checkGender(inputRadioButtons);
         checkHobbyChecking(arrHobbyCheckbox);
         checkInterestSelected(selectedValueArray);
@@ -69,6 +88,9 @@ function formEvent(ev) {
         checkEnteredDateBirth(dateBirth);
         checkNumber(age);
         checkProfilePicture(profilePicture);
+
+        checkTerms(agreeRadioButtons);
+
     }
 }
 
@@ -123,17 +145,24 @@ function checkEmail(input) {
     }
 }
 
+
+function isFieldNameExist(input, required) {
+    if (input.value.trim() === '') {
+        showError(input, `${getFieldName(input)} 은 필수 입력값 입니다.`);
+        required = true;
+    } else {
+        showSuccess(input);
+    }
+    return required;
+}
+
 function checkRequired(inputArr) {
-    let isRequired = false;
+    let required = false;
     inputArr.forEach(input => {
-        if (input.value.trim() === '') {
-            showError(input, `${getFieldName(input)} 은 필수 입력값 입니다.`);
-            isRequired = true;
-        } else {
-            showSuccess(input);
-        }
+        required = isFieldNameExist(input, required);
     });
-    return isRequired;
+    return required;
+
 }
 
 function checkLength(input, min) {
@@ -197,6 +226,25 @@ function checkGender(inputs) {
     }
 }
 
+
+function checkTerms(inputs) {
+    inputs.forEach((input) => {
+        if (input.checked) {
+            if (input.value === "checkDisagree") {
+                showError(inputs[0], "개인정보 수집에 동의해야 원활한 사이트 이용이 가능합니다 ");
+                radioButtonWrapper.classList.add("radio-button-wrapper");
+            } else if (input.value === "checkAgree") {
+                showSuccess(inputs[0]);
+                radioButtonWrapper.classList.add("radio-button-wrapper");
+            } else {
+                return;
+            }
+        }
+
+    });
+}
+
+
 function checkHobbyChecking(inputs) {
     let checked = false;
     inputs.forEach((input) => {
@@ -214,8 +262,10 @@ function getSelectedValueArray(inputs) {
     let result = [];
     let options = inputs;
     let opt;
-    for (let i = 0; i < inputs.length; i++) {
-        opt = options[i];
+
+    for (let option_i = 0; option_i < inputs.length; option_i++) {
+        opt = options[option_i];
+
 
         if (opt.selected) {
             result.push(opt.value || opt.text);
@@ -226,14 +276,16 @@ function getSelectedValueArray(inputs) {
 }
 
 function checkInterestSelected(result) {
-    let flag = false;
+
+    let selected = false;
     result.forEach(text => {
         if (text === "choose") {
             showError(interest, "취미를 최소 1개 이상 선택해 주세요");
-            flag = true;
+            selected = true;
         }
     })
-    if (!flag) {
+    if (!selected) {
+
         showSuccess(interest);
     }
 }
@@ -376,3 +428,35 @@ function updateImageDisplay() {
     }
 
 }
+
+
+function controlButton() {
+    const scrollTop = personalInfo.scrollTop;
+    radioButtonWrapper.classList.add("hidden");
+    if (scrollTop === 932) {
+        radioButtonWrapper.classList.remove("hidden");
+        radioButtonWrapper.classList.add("show");
+    } else {
+        radioButtonWrapper.classList.remove("show");
+        radioButtonWrapper.classList.add("hidden");
+    }
+}
+
+function openCloseContent() {
+    if (personalInfo.style.display === 'block') {
+        personalInfo.style.display = 'none';
+    } else {
+        personalInfo.style.display = 'block';
+    }
+}
+
+function checkProfilePicture(input) {
+    let uploadImageFileCount = input.files.length;
+    console.log(uploadImageFileCount);
+    if (uploadImageFileCount === 0) {
+        showError(input, "프로필 사진을 업로드해주세요.");
+    } else {
+        showSuccess(input);
+    }
+}
+

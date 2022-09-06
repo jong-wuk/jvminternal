@@ -19,9 +19,10 @@ const age = document.getElementById("age");
 const profilePicture = document.getElementById("profilePicture");
 const moreDetails = document.getElementById("moreDetails");
 const personalInfo = document.getElementById("personalInfo");
+const agreeRadioButtons = document.querySelectorAll(".agree-radio");
+const radioButtonWrapper = document.getElementById("radio-button-wrapper");
 const SELFINTRODUCTION_MIN_VALUE = 10;
 const SELFINTRODUCTION_MAX_VALUE = 100;
-
 
 
 personalInfo.addEventListener('scroll', controlButton)
@@ -30,6 +31,7 @@ profilePicture.addEventListener('change', updateImageDisplay);
 
 phoneNumber.onkeyup = autoHyphenPhoneNumber;
 selfIntroduction.onkeyup = getCurrentTextLength;
+
 
 form.addEventListener('submit', formEvent);
 
@@ -55,6 +57,7 @@ function formEvent(ev) {
         checkEnteredDateBirth(dateBirth);
         checkNumber(age);
         checkProfilePicture(profilePicture);
+        checkTerms(agreeRadioButtons);
     }
 }
 
@@ -181,6 +184,22 @@ function checkGender(inputs) {
     if (!selected) {
         showError(inputs[0], "성별을 선택해 주세요!")
     }
+}
+function checkTerms(inputs) {
+    inputs.forEach((input) => {
+        if (input.checked) {
+            if (input.value === "checkDisagree") {
+                showError(inputs[0], "개인정보 수집에 동의해야 원활한 사이트 이용이 가능합니다 ");
+                radioButtonWrapper.classList.add("radio-button-wrapper");
+            } else if (input.value === "checkAgree") {
+                showSuccess(inputs[0]);
+                radioButtonWrapper.classList.add("radio-button-wrapper");
+            } else {
+                return;
+            }
+        }
+
+    });
 }
 
 function checkHobbyChecking(inputs) {
@@ -365,13 +384,11 @@ function updateImageDisplay() {
 
 function controlButton() {
     const scrollTop = personalInfo.scrollTop;
-    const radioButtonWrapper = document.getElementById("radio-button-wrapper");
     radioButtonWrapper.classList.add("hidden");
-    console.log(scrollTop);
     if (scrollTop === 932) {
         radioButtonWrapper.classList.remove("hidden");
         radioButtonWrapper.classList.add("show");
-    }else{
+    } else {
         radioButtonWrapper.classList.remove("show");
         radioButtonWrapper.classList.add("hidden");
     }

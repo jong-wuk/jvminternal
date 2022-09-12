@@ -1,18 +1,15 @@
 package me.wook;
 
-import javax.crypto.Cipher;
-import java.util.List;
-
 public class App {
-
-    static String myName;
-    static{
-        myName = "wook";
-    }
-
-    private String foo = "bar";
-
+        static int age = 10;
+        static{
+            age = 20;
+            System.out.println("static block");
+        }
     public static void main(String[] args) {
-        System.out.println(App.class.getSuperclass());
+        ClassLoader classLoader = App.class.getClassLoader();
+        System.out.println(classLoader);
+        System.out.println(classLoader.getParent());
+        System.out.println(classLoader.getParent().getParent());
     }
 }
